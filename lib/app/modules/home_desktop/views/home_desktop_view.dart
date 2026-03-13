@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/app/helpers/widgets/about_section.dart';
 import 'package:portfolio/app/helpers/widgets/contact_section.dart';
 import 'package:portfolio/app/helpers/widgets/experience_section.dart';
+import 'package:portfolio/app/helpers/widgets/project_section.dart';
 import 'package:portfolio/app/modules/home/widgets/hero_section.dart';
 import 'package:portfolio/app/modules/home/widgets/navbar.dart';
 
@@ -17,6 +18,7 @@ class HomeDesktopView extends StatelessWidget {
             Navbar(),
             HeroSection(),
             AboutSection(),
+            ProjectsSection(),
             ExperienceSection(),
             ContactSection(),
           ],

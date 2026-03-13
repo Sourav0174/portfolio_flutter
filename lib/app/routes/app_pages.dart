@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:portfolio/app/modules/legal/paper_trade/privacy_policy.dart';
 
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
@@ -36,6 +37,11 @@ class AppPages {
       name: _Paths.HOME_DESKTOP,
       page: () => const HomeDesktopView(),
       binding: HomeDesktopBinding(),
+    ),
+
+    GetPage(
+      name: Routes.PAPER_TRADING_PRIVACY,
+      page: () => const PrivacyPolicyView(),
     ),
   ];
 }

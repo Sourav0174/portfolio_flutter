@@ -9,6 +9,7 @@ abstract class Routes {
   static const HOME_DESKTOP = _Paths.HOME_DESKTOP;
   static const ABOUT = _Paths.ABOUT;
   static const CONNECT_SECTION = _Paths.CONNECT_SECTION;
+  static const PAPER_TRADING_PRIVACY = _Paths.PAPER_TRADING_PRIVACY;
 }
 
 abstract class _Paths {
@@ -19,4 +20,6 @@ abstract class _Paths {
   static const HOME_DESKTOP = '/home-desktop';
   static const ABOUT = '/about';
   static const CONNECT_SECTION = '/connect-section';
+
+  static const PAPER_TRADING_PRIVACY = '/legal/paper-trading/privacy-policy';
 }

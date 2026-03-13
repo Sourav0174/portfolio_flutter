@@ -4,6 +4,8 @@ import 'dart:ui';
 
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
 
@@ -324,56 +326,118 @@ class _PortfolioFooter extends StatelessWidget {
           color: Colors.white.withOpacity(0.08),
         ),
 
-        const SizedBox(height: 30),
+        const SizedBox(height: 40),
 
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// LEFT SIDE
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "© 2026 Sourav",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
+            /// LEFT BRAND
+            Expanded(
+              flex: 2,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Sourav",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
 
-                const SizedBox(height: 6),
+                  const SizedBox(height: 12),
 
-                Text(
-                  "Built with Flutter • Designed & Developed by Sourav",
-                  style: TextStyle(
-                    color: Colors.white.withOpacity(0.6),
-                    fontSize: 13,
+                  Text(
+                    "Building scalable mobile and AI-powered "
+                    "applications using Flutter, Node.js, and "
+                    "modern cloud technologies.",
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.6),
+                      height: 1.6,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
 
-            /// RIGHT SIDE
-            Row(
-              children: [
-                _FooterLink("Home"),
-                const SizedBox(width: 20),
-                _FooterLink("Projects"),
-                const SizedBox(width: 20),
-                _FooterLink("About"),
-                const SizedBox(width: 20),
-                _FooterLink("Contact"),
-              ],
+            const SizedBox(width: 60),
+
+            /// NAVIGATION
+            Expanded(
+              child: _FooterColumn(
+                title: "Navigation",
+                children: const [
+                  _FooterLink("Home"),
+                  _FooterLink("Projects"),
+                  _FooterLink("About"),
+                  _FooterLink("Contact"),
+                ],
+              ),
+            ),
+
+            /// PROJECTS
+            Expanded(
+              child: _FooterColumn(
+                title: "Projects",
+                children: const [
+                  _FooterLink("RiseAbove"),
+                  _FooterLink("Flexx"),
+                  _FooterLink("LinkUp"),
+                ],
+              ),
+            ),
+
+            /// LEGAL
+            Expanded(
+              child: _FooterColumn(
+                title: "Legal",
+                children: const [
+                  _FooterLink(
+                    "Privacy Policy",
+                    route: "/legal/paper-trading/privacy-policy",
+                  ),
+                ],
+              ),
             ),
           ],
         ),
 
-        const SizedBox(height: 20),
+        const SizedBox(height: 40),
 
-        /// Bottom micro text
+        /// Bottom text
         Text(
-          "Open for freelance, collaborations, and innovative projects.",
+          "© 2026 Sourav — Built with Flutter",
           style: TextStyle(color: Colors.white.withOpacity(0.5), fontSize: 12),
+        ),
+      ],
+    );
+  }
+}
+
+class _FooterColumn extends StatelessWidget {
+  final String title;
+  final List<Widget> children;
+
+  const _FooterColumn({required this.title, required this.children});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+
+        const SizedBox(height: 15),
+
+        ...children.map(
+          (e) => Padding(padding: const EdgeInsets.only(bottom: 8), child: e),
         ),
       ],
     );
@@ -382,8 +446,9 @@ class _PortfolioFooter extends StatelessWidget {
 
 class _FooterLink extends StatefulWidget {
   final String text;
+  final String? route;
 
-  const _FooterLink(this.text);
+  const _FooterLink(this.text, {this.route});
 
   @override
   State<_FooterLink> createState() => _FooterLinkState();
@@ -395,18 +460,27 @@ class _FooterLinkState extends State<_FooterLink> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
+      cursor: SystemMouseCursors.click,
       onEnter: (_) => setState(() => hover = true),
       onExit: (_) => setState(() => hover = false),
-      child: AnimatedDefaultTextStyle(
-        duration: const Duration(milliseconds: 200),
-        style: TextStyle(
-          color: hover
-              ? const Color(0xFF8B5CF6)
-              : Colors.white.withOpacity(0.6),
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
+      child: GestureDetector(
+        onTap: () {
+          if (widget.route != null) {
+            // if you are using GetX routing
+            Get.toNamed(widget.route!);
+          }
+        },
+        child: AnimatedDefaultTextStyle(
+          duration: const Duration(milliseconds: 200),
+          style: TextStyle(
+            color: hover
+                ? const Color(0xFF8B5CF6)
+                : Colors.white.withOpacity(0.6),
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ),
+          child: Text(widget.text),
         ),
-        child: Text(widget.text),
       ),
     );
   }
