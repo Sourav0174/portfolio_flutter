@@ -5,7 +5,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/app/helpers/constants/app_colors.dart';
 
 class Navbar extends StatelessWidget {
-  const Navbar({super.key});
+  final Function(int) onMenuTap;
+  final int currentIndex;
+
+  const Navbar({
+    super.key,
+    required this.onMenuTap,
+    required this.currentIndex,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +33,8 @@ class Navbar extends StatelessWidget {
             ),
 
             // CENTER - Menu (hide on mobile)
-            if (width > 900) _DesktopMenu(),
+            if (width > 900)
+              _DesktopMenu(onMenuTap: onMenuTap, currentIndex: currentIndex),
 
             // RIGHT - Contact / Menu icon
             width > 900 ? _ContactButton() : _MobileMenuButton(),
@@ -37,12 +45,11 @@ class Navbar extends StatelessWidget {
   }
 }
 
-class _DesktopMenu extends StatefulWidget {
-  @override
-  State<_DesktopMenu> createState() => _DesktopMenuState();
-}
+class _DesktopMenu extends StatelessWidget {
+  final Function(int) onMenuTap;
+  final int currentIndex;
 
-class _DesktopMenuState extends State<_DesktopMenu> {
+  _DesktopMenu({required this.onMenuTap, required this.currentIndex});
   int selectedIndex = 0;
 
   final List<String> items = const [
@@ -57,15 +64,13 @@ class _DesktopMenuState extends State<_DesktopMenu> {
   Widget build(BuildContext context) {
     return Row(
       children: List.generate(items.length, (index) {
-        final isSelected = selectedIndex == index;
+        final isSelected = currentIndex == index;
 
         return MouseRegion(
           cursor: SystemMouseCursors.click,
           child: GestureDetector(
             onTap: () {
-              setState(() {
-                selectedIndex = index;
-              });
+              onMenuTap(index); // 🚀 scroll happens here
             },
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 250),

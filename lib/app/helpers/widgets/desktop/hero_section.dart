@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portfolio/app/helpers/constants/app_colors.dart';
 import 'package:portfolio/app/helpers/constants/constant_variables.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HeroSection extends StatelessWidget {
   const HeroSection({super.key});
@@ -51,6 +52,10 @@ class HeroSection extends StatelessWidget {
                       //     ),
                       //   ),
                       // ),
+                      Positioned(right: 60, top: 620, child: const HeroCTA())
+                          .animate(delay: 700.ms)
+                          .fadeIn()
+                          .slideY(begin: 0.3, end: 0),
 
                       /// 🔹 STATIC HEADLINE
                       Positioned(
@@ -337,6 +342,117 @@ class HeroSection extends StatelessWidget {
                   ),
         ),
       ),
+    );
+  }
+}
+
+class HeroCTA extends StatefulWidget {
+  const HeroCTA({super.key});
+
+  @override
+  State<HeroCTA> createState() => _HeroCTAState();
+}
+
+class _HeroCTAState extends State<HeroCTA> {
+  bool isHoveringPrimary = false;
+  bool isHoveringSecondary = false;
+  bool isDownloading = false;
+
+  final String resumeUrl =
+      "https://drive.google.com/uc?export=download&id=19OxYRcdqiiYL-X11O5t2-lmHLqEoZBNq";
+
+  Future<void> _downloadResume() async {
+    setState(() => isDownloading = true);
+
+    await Future.delayed(const Duration(milliseconds: 1200)); // fake loading
+
+    final uri = Uri.parse(resumeUrl);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, webOnlyWindowName: "_blank");
+    }
+
+    setState(() => isDownloading = false);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        /// 🔥 PRIMARY CTA (Download Resume)
+        MouseRegion(
+          onEnter: (_) => setState(() => isHoveringPrimary = true),
+          onExit: (_) => setState(() => isHoveringPrimary = false),
+          child: GestureDetector(
+            onTap: _downloadResume,
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 16),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                gradient: LinearGradient(
+                  colors: [const Color(0XFFF3904F), const Color(0XFF3B4371)],
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(
+                      0XFFF3904F,
+                    ).withOpacity(isHoveringPrimary ? 0.6 : 0.3),
+                    blurRadius: isHoveringPrimary ? 25 : 12,
+                    offset: const Offset(0, 8),
+                  ),
+                ],
+              ),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  /// ✨ SHINE EFFECT
+                  AnimatedPositioned(
+                    duration: const Duration(milliseconds: 700),
+                    left: isHoveringPrimary ? 200 : -150,
+                    child: Container(
+                      width: 120,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Colors.white.withOpacity(0.0),
+                            Colors.white.withOpacity(0.4),
+                            Colors.white.withOpacity(0.0),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        isDownloading ? Icons.hourglass_top : Icons.download,
+                        color: Colors.white,
+                      ),
+                      const SizedBox(width: 10),
+                      AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 300),
+                        child: Text(
+                          isDownloading ? "Downloading..." : "Download Resume",
+                          key: ValueKey(isDownloading),
+                          style: Theme.of(context).textTheme.bodyMedium!
+                              .copyWith(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                              ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

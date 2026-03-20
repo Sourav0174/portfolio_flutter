@@ -35,7 +35,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.HOME_DESKTOP,
-      page: () => const HomeDesktopView(),
+      page: () => HomeDesktopView(),
       binding: HomeDesktopBinding(),
     ),
 

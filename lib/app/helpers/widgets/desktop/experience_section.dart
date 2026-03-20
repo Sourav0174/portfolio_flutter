@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../constants/app_colors.dart';
+import '../../constants/app_colors.dart';
 
 class ExperienceSection extends StatefulWidget {
   const ExperienceSection({super.key});
@@ -443,7 +443,7 @@ final List<Experience> experiences = [
   Experience(
     year: "Aug 2025 to Jan 2026",
     role: " Software Developer Intern",
-    company: "Independent Builder",
+    company: "Appknit",
     tech: ["Flutter", "GetX", "Firebase"],
     highlights: [
       "Built 3 production ready apps",

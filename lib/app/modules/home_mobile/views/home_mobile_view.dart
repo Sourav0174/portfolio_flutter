@@ -1,36 +1,91 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/app/modules/home/widgets/navbar.dart';
-import 'package:portfolio/app/modules/home/widgets/profile_image.dart';
+import 'package:portfolio/app/helpers/widgets/desktop/about_section.dart';
+import 'package:portfolio/app/helpers/widgets/desktop/contact_section.dart';
+import 'package:portfolio/app/helpers/widgets/desktop/experience_section.dart';
+import 'package:portfolio/app/helpers/widgets/mobile/about_section_mobile.dart';
+import 'package:portfolio/app/helpers/widgets/mobile/contact_section_mobile.dart';
+import 'package:portfolio/app/helpers/widgets/mobile/experience_section_mobile.dart';
+import 'package:portfolio/app/helpers/widgets/mobile/project_section_mobile.dart';
+import 'package:portfolio/app/modules/home/widgets/desktop/navbar.dart';
+import 'package:portfolio/app/modules/home/widgets/desktop/profile_image.dart';
+import 'package:portfolio/app/helpers/widgets/mobile/hero_section_mobile.dart';
 
-class HomeMobileView extends StatelessWidget {
+class HomeMobileView extends StatefulWidget {
   const HomeMobileView({super.key});
+
+  @override
+  State<HomeMobileView> createState() => _HomeMobileViewState();
+}
+
+class _HomeMobileViewState extends State<HomeMobileView> {
+  final scrollController = ScrollController();
+
+  final homeKey = GlobalKey();
+  final aboutKey = GlobalKey();
+  final projectsKey = GlobalKey();
+  final experienceKey = GlobalKey();
+  final contactKey = GlobalKey();
+
+  void scrollToSection(GlobalKey key) {
+    final context = key.currentContext;
+    if (context != null) {
+      Scrollable.ensureVisible(
+        context,
+        duration: const Duration(milliseconds: 600),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Sourav"),
+        actions: [
+          PopupMenuButton<int>(
+            onSelected: (index) {
+              switch (index) {
+                case 0:
+                  scrollToSection(homeKey);
+                  break;
+                case 1:
+                  scrollToSection(aboutKey);
+                  break;
+                case 2:
+                  scrollToSection(projectsKey);
+                  break;
+                case 3:
+                  scrollToSection(experienceKey);
+                  break;
+                case 4:
+                  scrollToSection(contactKey);
+                  break;
+              }
+            },
+            itemBuilder: (context) => const [
+              PopupMenuItem(value: 0, child: Text("Home")),
+              PopupMenuItem(value: 1, child: Text("About")),
+              PopupMenuItem(value: 2, child: Text("Projects")),
+              PopupMenuItem(value: 3, child: Text("Experience")),
+              PopupMenuItem(value: 4, child: Text("Contact")),
+            ],
+          ),
+        ],
+      ),
+
       body: SingleChildScrollView(
+        controller: scrollController,
         child: Column(
-          children: const [
-            Navbar(),
-            SizedBox(height: 32),
-            ProfileImage(),
-            SizedBox(height: 24),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24),
-              child: Text(
-                "Hey There,\nI’m Sourav",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-              ),
+          children: [
+            Container(key: homeKey, child: const HeroSectionMobile()),
+            Container(key: aboutKey, child: const AboutSectionMobile()),
+            Container(key: projectsKey, child: const ProjectsSectionMobile()),
+            Container(
+              key: experienceKey,
+              child: const ExperienceSectionMobile(),
             ),
-            SizedBox(height: 16),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24),
-              child: Text(
-                "I build beautifully simple Flutter apps & web experiences.",
-                textAlign: TextAlign.center,
-              ),
-            ),
+            Container(key: contactKey, child: const ContactSectionMobile()),
           ],
         ),
       ),

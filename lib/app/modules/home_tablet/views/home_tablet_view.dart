@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/app/modules/home/widgets/hero_section.dart';
-import 'package:portfolio/app/modules/home/widgets/navbar.dart';
+import 'package:portfolio/app/helpers/widgets/desktop/hero_section.dart';
+import 'package:portfolio/app/modules/home/widgets/desktop/navbar.dart';
 
 class HomeTabletView extends StatelessWidget {
   const HomeTabletView({super.key});
@@ -9,7 +9,12 @@ class HomeTabletView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(children: const [Navbar(), HeroSection()]),
+        child: Column(
+          children: const [
+            // Navbar(),
+            HeroSection(),
+          ],
+        ),
       ),
     );
   }

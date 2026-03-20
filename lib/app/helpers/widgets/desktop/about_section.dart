@@ -22,26 +22,52 @@ class AboutSection extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 /// SECTION TITLE
-                Text(
-                  "About Me",
-                  style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 40,
+                ShaderMask(
+                  shaderCallback: (bounds) => const LinearGradient(
+                    colors: [
+                      Color.fromARGB(144, 59, 67, 113),
+                      Color(0xFF2F4F4F),
+                    ],
+                  ).createShader(bounds),
+                  child: const Text(
+                    "About Me",
+                    style: TextStyle(
+                      fontSize: 52,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      letterSpacing: -1,
+                    ),
                   ),
                 ),
 
                 const SizedBox(height: 30),
 
                 /// SHORT BIO
-                Text(
-                  "I build digital products that feel fast, intentional, and alive.",
-                  style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                    fontSize: 36,
-                    fontWeight: FontWeight.bold,
-                    height: 1.3,
+                RichText(
+                  text: TextSpan(
+                    style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                      fontSize: 34,
+                      fontWeight: FontWeight.bold,
+                      height: 1.4,
+                      color: Colors.black,
+                    ),
+                    children: const [
+                      TextSpan(text: "I build "),
+                      TextSpan(
+                        text: "fast, scalable",
+                        style: TextStyle(color: Color(0xFF2F4F4F)),
+                      ),
+                      TextSpan(text: " and "),
+                      TextSpan(
+                        text: "intelligent",
+                        style: TextStyle(color: Color(0xFF2F4F4F)),
+                      ),
+                      TextSpan(text: " digital products."),
+                    ],
                   ),
-                ),
+                ).animate().fadeIn(delay: 200.ms).slideY(begin: 0.2),
                 const SizedBox(height: 25),
+
                 Text(
                   "I'm Sourav — a Flutter engineer focused on architecture, performance, "
                   "and building scalable systems.\n"
@@ -106,12 +132,12 @@ class AboutSection extends StatelessWidget {
                     TechBadge(
                       title: "Github",
                       imagePath: "assets/techIcons/github.png",
-                      color: Color(0XFF47A248),
+                      color: Colors.black12,
                     ),
                     TechBadge(
                       title: "Postman",
                       imagePath: "assets/techIcons/postman.png",
-                      color: Color(0XFFFFA611),
+                      color: Colors.redAccent,
                     ),
                     TechBadge(
                       title: "Docker",
@@ -121,7 +147,7 @@ class AboutSection extends StatelessWidget {
                     TechBadge(
                       title: "ChatGPT",
                       imagePath: "assets/techIcons/chatgpt.png",
-                      color: Color(0XFF02569B),
+                      color: Colors.black12,
                     ),
                     TechBadge(
                       title: "Gemini",
@@ -131,7 +157,7 @@ class AboutSection extends StatelessWidget {
                     TechBadge(
                       title: "Rozarpay",
                       imagePath: "assets/techIcons/rozarpay.png",
-                      color: Color(0XFF02569B),
+                      color: Colors.blue,
                     ),
 
                     TechBadge(

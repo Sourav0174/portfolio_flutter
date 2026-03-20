@@ -5,12 +5,13 @@ import 'dart:ui';
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
 
 class ContactSection extends StatelessWidget {
-  const ContactSection({super.key});
+  final Function(int)? onMenuTap;
+
+  const ContactSection({super.key, this.onMenuTap});
 
   @override
   Widget build(BuildContext context) {
@@ -263,7 +264,7 @@ class ContactSection extends StatelessWidget {
               const SizedBox(height: 80),
 
               /// FOOTER
-              const _PortfolioFooter(),
+              _PortfolioFooter(onMenuTap: onMenuTap),
             ],
           ),
         ],
@@ -313,7 +314,9 @@ class _ContactFormState extends State<ContactForm> {
 }
 
 class _PortfolioFooter extends StatelessWidget {
-  const _PortfolioFooter();
+  final Function(int)? onMenuTap;
+
+  const _PortfolioFooter({this.onMenuTap});
 
   @override
   Widget build(BuildContext context) {
@@ -350,7 +353,7 @@ class _PortfolioFooter extends StatelessWidget {
 
                   Text(
                     "Building scalable mobile and AI-powered "
-                    "applications using Flutter, Node.js, and "
+                    "applications using Flutter, FastAPI, and "
                     "modern cloud technologies.",
                     style: TextStyle(
                       color: Colors.white.withOpacity(0.6),
@@ -367,11 +370,12 @@ class _PortfolioFooter extends StatelessWidget {
             Expanded(
               child: _FooterColumn(
                 title: "Navigation",
-                children: const [
-                  _FooterLink("Home"),
-                  _FooterLink("Projects"),
-                  _FooterLink("About"),
-                  _FooterLink("Contact"),
+                children: [
+                  _FooterLink("Home", index: 0, onTap: onMenuTap),
+                  _FooterLink("About", index: 1, onTap: onMenuTap),
+                  _FooterLink("Projects", index: 2, onTap: onMenuTap),
+                  _FooterLink("Experience", index: 3, onTap: onMenuTap),
+                  _FooterLink("Contact", index: 4, onTap: onMenuTap),
                 ],
               ),
             ),
@@ -447,8 +451,10 @@ class _FooterColumn extends StatelessWidget {
 class _FooterLink extends StatefulWidget {
   final String text;
   final String? route;
+  final int? index;
+  final Function(int)? onTap;
 
-  const _FooterLink(this.text, {this.route});
+  const _FooterLink(this.text, {this.route, this.index, this.onTap});
 
   @override
   State<_FooterLink> createState() => _FooterLinkState();
@@ -465,9 +471,10 @@ class _FooterLinkState extends State<_FooterLink> {
       onExit: (_) => setState(() => hover = false),
       child: GestureDetector(
         onTap: () {
-          if (widget.route != null) {
-            // if you are using GetX routing
-            Get.toNamed(widget.route!);
+          if (widget.index != null && widget.onTap != null) {
+            widget.onTap!(widget.index!); // 🔥 scroll
+          } else if (widget.route != null) {
+            Get.toNamed(widget.route!); // 🔁 fallback
           }
         },
         child: AnimatedDefaultTextStyle(
@@ -1002,8 +1009,10 @@ class ParticlePainter extends CustomPainter {
         ..shader =
             RadialGradient(
               colors: [
-                const Color(0xFF8B5CF6).withOpacity(particle.opacity),
-                const Color(0xFF6366F1).withOpacity(particle.opacity * 0.6),
+                const Color(0xFF8B5CF6).withValues(alpha: particle.opacity),
+                const Color(
+                  0xFF6366F1,
+                ).withValues(alpha: particle.opacity * 0.6),
                 Colors.transparent,
               ],
             ).createShader(
