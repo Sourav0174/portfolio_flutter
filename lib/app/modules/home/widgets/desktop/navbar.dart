@@ -87,7 +87,7 @@ class _DesktopMenu extends StatelessWidget {
                   width: 1.3,
                 ),
               ),
-              child: Text(items[index].toUpperCase()),
+              child: Text(items[index].toUpperCase(),style: TextStyle(),),
             ),
           ),
         );

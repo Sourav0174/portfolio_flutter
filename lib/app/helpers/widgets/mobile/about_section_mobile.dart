@@ -1,8 +1,6 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:portfolio/app/helpers/widgets/desktop/about_section.dart';
 
 class AboutSectionMobile extends StatelessWidget {
   const AboutSectionMobile({super.key});
@@ -16,158 +14,178 @@ class AboutSectionMobile extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          /// 🔥 TITLE
-          ShaderMask(
-            shaderCallback: (bounds) => const LinearGradient(
-              colors: [Color(0XFFF3904F), Color(0XFF3B4371)],
-            ).createShader(bounds),
-            child: const Text(
-              "About Me",
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-          ),
-
-          const SizedBox(height: 20),
-
-          /// 💡 HEADLINE
-          RichText(
-            text: const TextSpan(
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                height: 1.4,
-                color: Colors.black,
-              ),
-              children: [
-                TextSpan(text: "I build "),
-                TextSpan(
-                  text: "fast, scalable",
-                  style: TextStyle(color: Color(0xFF2F4F4F)),
-                ),
-                TextSpan(text: " and "),
-                TextSpan(
-                  text: "intelligent",
-                  style: TextStyle(color: Color(0xFF2F4F4F)),
-                ),
-                TextSpan(text: " apps."),
-              ],
+          /// 🔥 TITLE (CLEAN)
+          const Text(
+            "About",
+            style: TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.w700,
+              letterSpacing: -0.5,
             ),
           ).animate().fadeIn().slideY(begin: 0.2),
 
           const SizedBox(height: 16),
 
+          /// 💡 HEADLINE (STRONG TYPOGRAPHY)
+          Text(
+            "I build fast, scalable\nand intelligent apps.",
+            style: TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.w800,
+              height: 1.2,
+              color: Color(0xFF111111), // 🔥 important
+            ),
+          ).animate().fadeIn(delay: 100.ms).slideY(begin: 0.2),
+
+          const SizedBox(height: 12),
+
           /// 🧠 DESCRIPTION
           const Text(
-            "I'm Sourav — a Flutter developer focused on performance, clean architecture and scalable systems.\n\n"
-            "I love building apps that not only work — but feel smooth and premium.\n\n"
-            "Currently exploring AI + backend to build intelligent full-stack products.",
-            style: TextStyle(fontSize: 14, height: 1.7, color: Colors.black87),
+            "I'm Sourav — a Flutter developer focused on performance, clean architecture and scalable systems.\n"
+            "I create apps that feel smooth, fast and premium.\n"
+            "Currently exploring AI + backend to build intelligent products.",
+            style: TextStyle(fontSize: 15, height: 1.7, color: Colors.black87),
           ).animate().fadeIn(delay: 200.ms),
 
-          const SizedBox(height: 30),
+          const SizedBox(height: 40),
 
-          /// 🖼️ IMAGE CARD (SIMPLIFIED VERSION)
+          /// 🖼️ IMAGE + INFO CARD (NEW STYLE)
           Container(
-            height: 260,
-            width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              image: const DecorationImage(
-                image: AssetImage("assets/images/potrait.jpg"),
-                fit: BoxFit.cover,
-              ),
+              color: Colors.white,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.15),
+                  color: Colors.black.withOpacity(0.04),
                   blurRadius: 20,
                   offset: const Offset(0, 10),
                 ),
               ],
             ),
-            child: Container(
-              alignment: Alignment.bottomLeft,
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                gradient: LinearGradient(
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.center,
-                  colors: [Colors.black.withOpacity(0.5), Colors.transparent],
+            child: Stack(
+              children: [
+                Column(
+                  children: [
+                    /// IMAGE
+                    ClipRRect(
+                      borderRadius: const BorderRadius.vertical(
+                        top: Radius.circular(20),
+                      ),
+                      child: Image.asset(
+                        "assets/images/potrait.jpg",
+                        height: 600,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+
+                    /// INFO
+                    Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Row(
+                        children: [
+                          /// NAME + ROLE
+                          const Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Sourav Kumar",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                SizedBox(height: 4),
+                                Text(
+                                  "Flutter Developer • AI Explorer",
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.black54,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          /// STATUS DOT
+                          Container(
+                            height: 10,
+                            width: 10,
+                            decoration: const BoxDecoration(
+                              color: Colors.green,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              child: const Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Sourav Kumar",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
+                Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.center,
+                      colors: [
+                        Colors.black.withOpacity(0.25),
+                        Colors.transparent,
+                      ],
                     ),
                   ),
-                  Text(
-                    "Flutter • AI Explorer",
-                    style: TextStyle(color: Colors.white70, fontSize: 12),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ).animate().fadeIn(delay: 300.ms).scale(),
+          ).animate().fadeIn(delay: 300.ms).slideY(begin: 0.2),
 
           const SizedBox(height: 30),
 
-          /// 🛠️ TECH STACK
+          /// 🛠️ TECH TITLE
           const Text(
             "Tech & Tools",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+          ).animate().fadeIn(delay: 400.ms),
 
-          const SizedBox(height: 20),
+          const SizedBox(height: 16),
 
+          /// 🧩 CLEAN TECH GRID
           Wrap(
-            spacing: 12,
-            runSpacing: 12,
+            spacing: 10,
+            runSpacing: 10,
             children: const [
-              TechBadge(
-                title: "Flutter",
-                imagePath: "assets/techIcons/flutter.png",
-                color: Color(0XFF02569B),
-              ),
-              TechBadge(
-                title: "Firebase",
-                imagePath: "assets/techIcons/firebase.png",
-                color: Color(0XFFFFA611),
-              ),
-              TechBadge(
-                title: "FastAPI",
-                imagePath: "assets/techIcons/fastapi.png",
-                color: Color(0XFF3C873A),
-              ),
-              TechBadge(
-                title: "Python",
-                imagePath: "assets/techIcons/python.png",
-                color: Color(0XFF3C873A),
-              ),
-              TechBadge(
-                title: "MongoDB",
-                imagePath: "assets/techIcons/mongodb.png",
-                color: Color(0XFF47A248),
-              ),
-              TechBadge(
-                title: "PostgreSQL",
-                imagePath: "assets/techIcons/postgresql.png",
-                color: Color(0XFF47A248),
-              ),
-            ],
+              _Chip("Flutter"),
+              _Chip("Firebase"),
+              _Chip("FastAPI"),
+              _Chip("Python"),
+              _Chip("MongoDB"),
+              _Chip("PostgreSQL"),
+              _Chip("Docker"),
+              _Chip("Stripe"),
+              _Chip("Postman"),
+              _Chip("GitHub"),
+            ].animate(interval: 60.ms).fadeIn(),
           ),
         ],
       ),
+    );
+  }
+}
+
+/// 💎 MINIMAL CHIP (BETTER THAN HEAVY BADGES)
+class _Chip extends StatelessWidget {
+  final String text;
+  const _Chip(this.text);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+        color: Colors.white,
+        border: Border.all(color: Colors.black12),
+      ),
+      child: Text(text, style: const TextStyle(fontSize: 13)),
     );
   }
 }
