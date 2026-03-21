@@ -8,58 +8,67 @@ class ProjectsSectionMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 40),
-      color: Colors.white,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          /// 🔥 TITLE
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Text(
-              "Featured Work",
-              style: TextStyle(
-                fontSize: 14,
-                letterSpacing: 1.2,
-                color: Color(0xff6366F1),
-                fontWeight: FontWeight.w600,
+    return Stack(
+      children: [
+        Positioned.fill(
+          child: Opacity(
+            opacity: 0.05,
+            child: CustomPaint(painter: GridPainter()),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 60),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              /// 🔥 TITLE
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  "Featured Work",
+                  style: TextStyle(
+                    fontSize: 14,
+                    letterSpacing: 1.2,
+                    color: Color(0xff6366F1),
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               ),
-            ),
+
+              const SizedBox(height: 10),
+
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  "Apps I've Built",
+                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              /// 🚀 HORIZONTAL PROJECT CARDS
+              SizedBox(
+                height: 420,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: projects.length,
+                  itemBuilder: (context, index) {
+                    final project = projects[index];
+
+                    return Container(
+                      width: 300,
+                      margin: const EdgeInsets.only(left: 20, right: 10),
+                      child: ProjectCardMobile(project: project),
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
-
-          const SizedBox(height: 10),
-
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Text(
-              "Apps I've Built",
-              style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
-            ),
-          ),
-
-          const SizedBox(height: 20),
-
-          /// 🚀 HORIZONTAL PROJECT CARDS
-          SizedBox(
-            height: 420,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              physics: const BouncingScrollPhysics(),
-              itemCount: projects.length,
-              itemBuilder: (context, index) {
-                final project = projects[index];
-
-                return Container(
-                  width: 300,
-                  margin: const EdgeInsets.only(left: 20, right: 10),
-                  child: ProjectCardMobile(project: project),
-                );
-              },
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

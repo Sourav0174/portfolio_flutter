@@ -66,6 +66,7 @@ class AboutSection extends StatelessWidget {
                     ],
                   ),
                 ).animate().fadeIn(delay: 200.ms).slideY(begin: 0.2),
+
                 const SizedBox(height: 25),
 
                 Text(
