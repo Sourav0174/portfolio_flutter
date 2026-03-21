@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          title: "Application",
+          title: "Portfolio",
           theme: AppTheme.light,
           initialRoute: AppPages.INITIAL,
           getPages: AppPages.routes,
