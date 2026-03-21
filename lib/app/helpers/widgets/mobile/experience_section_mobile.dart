@@ -16,43 +16,70 @@ class ExperienceSectionMobile extends StatelessWidget {
           end: Alignment.bottomRight,
         ),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Stack(
         children: [
-          /// 🔥 HEADER
-          const Text(
-            "My Journey",
-            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+          Positioned.fill(
+            child: Opacity(
+              opacity: 0.05,
+              child: CustomPaint(painter: _GridPainter()),
+            ),
           ),
-
-          const SizedBox(height: 10),
-
-          const Text(
-            "From learning to building real-world scalable apps.",
-            style: TextStyle(color: Colors.grey),
-          ),
-
-          const SizedBox(height: 30),
-
-          /// 📊 STATS
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              _StatItemMobile("10+", "Projects"),
-              _StatItemMobile("3", "Apps"),
-              _StatItemMobile("AI", "Focus"),
-            ],
-          ),
-
-          const SizedBox(height: 30),
-
-          /// 🚀 EXPERIENCE LIST
           Column(
-            children: List.generate(experiences.length, (index) {
-              final exp = experiences[index];
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              /// 🔥 HEADER
+              ShaderMask(
+                shaderCallback: (bounds) => const LinearGradient(
+                  colors: [
+                    Color(0xff6366f1),
+                    Color.fromARGB(255, 189, 118, 255),
+                  ],
+                ).createShader(bounds),
+                child: const Text(
+                  "My Journey",
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    // letterSpacing: -1,
+                  ),
+                ),
+              ),
 
-              return ExperienceCardMobile(exp: exp, index: index);
-            }),
+              // const Text(
+              //   "My Journey",
+              //   style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+              // ),
+              const SizedBox(height: 10),
+
+              const Text(
+                "From learning to building real-world scalable apps.",
+                style: TextStyle(color: Colors.grey),
+              ),
+
+              const SizedBox(height: 30),
+
+              /// 📊 STATS
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  _StatItemMobile("10+", "Projects"),
+                  _StatItemMobile("3", "Apps"),
+                  _StatItemMobile("AI", "Focus"),
+                ],
+              ),
+
+              const SizedBox(height: 30),
+
+              /// 🚀 EXPERIENCE LIST
+              Column(
+                children: List.generate(experiences.length, (index) {
+                  final exp = experiences[index];
+
+                  return ExperienceCardMobile(exp: exp, index: index);
+                }),
+              ),
+            ],
           ),
         ],
       ),
@@ -145,6 +172,28 @@ class ExperienceCardMobile extends StatelessWidget {
       ),
     ).animate().fadeIn(delay: (index * 200).ms).slideY(begin: 0.2);
   }
+}
+
+class _GridPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.black
+      ..strokeWidth = 1;
+
+    const gap = 40.0;
+
+    for (double x = 0; x < size.width; x += gap) {
+      canvas.drawLine(Offset(x, 0), Offset(x, size.height), paint);
+    }
+
+    for (double y = 0; y < size.height; y += gap) {
+      canvas.drawLine(Offset(0, y), Offset(size.width, y), paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
 
 class _StatItemMobile extends StatelessWidget {
