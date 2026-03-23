@@ -95,6 +95,17 @@ flutter:
     - assets/projects/flexx3.jpg
     - assets/projects/flexx4.jpg
     - assets/projects/riseabove1.png
+    - assets/projects/talksy0.jpg
+    - assets/projects/talksy1.jpg
+    - assets/projects/talksy2.jpg
+    - assets/projects/talksy3.jpg
+    - "assets/projects/bellabites0.jpg",
+    - "assets/projects/bellabites1.jpg",
+    - "assets/projects/bellabites2.jpg",
+    - "assets/projects/bellabites3.jpg",
+    - "assets/projects/bellabites4.jpg",
+    - "assets/projects/bellabites5.jpg",
+    - "assets/projects/bellabites6.jpg",
 
     - assets/images/socialIcons/x.png
   #   - images/a_dot_burr.jpeg

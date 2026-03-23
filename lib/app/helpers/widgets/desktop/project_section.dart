@@ -4,6 +4,19 @@ import 'package:url_launcher/url_launcher.dart';
 
 final List<Project> projects = [
   Project(
+    title: "Talksy",
+    description:
+        "Talksy is a modern real-time chat application built with Flutter and Firebase — designed for seamless, fast, and secure conversations. Inspired by the simplicity of WhatsApp and powered by scalable cloud infrastructure, Talksy is your playground for building smart social experiences.",
+    image: [
+      "assets/projects/talksy0.jpg",
+      "assets/projects/talksy1.jpg",
+      "assets/projects/talksy2.jpg",
+      "assets/projects/talksy3.jpg",
+    ],
+    techStack: ["Flutter", "Firebase", "Bloc"],
+    github: "https://github.com/Sourav0174/talksy_chat_app",
+  ),
+  Project(
     title: "Flexx",
     description:
         "A social media platform with AI chatbot, modern UI, and real-time features built with Flutter and Firebase.",
@@ -16,7 +29,22 @@ final List<Project> projects = [
     techStack: ["Flutter", "Firebase", "Bloc"],
     github: "https://github.com/Sourav0174/flexx_app/tree/master",
   ),
-
+  Project(
+    title: "Bella Bite",
+    description:
+        "BellaBite is a beautifully designed food delivery app UI built using Flutter. Inspired by the richness of Italian cuisine, this app UI provides a clean, modern, and fully responsive experience – ideal for any food ordering or restaurant app concept.",
+    image: [
+      "assets/projects/bellabites0.jpg",
+      "assets/projects/bellabites1.jpg",
+      "assets/projects/bellabites2.jpg",
+      "assets/projects/bellabites3.jpg",
+      "assets/projects/bellabites4.jpg",
+      "assets/projects/bellabites5.jpg",
+      "assets/projects/bellabites6.jpg",
+    ],
+    techStack: ["Flutter", "UI Design"],
+    github: "https://github.com/Sourav0174/LinkUp_message_app_UI/tree/master",
+  ),
   Project(
     title: "LinkUp",
     description:

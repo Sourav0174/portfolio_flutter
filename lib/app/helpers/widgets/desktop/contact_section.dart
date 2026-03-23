@@ -5,6 +5,7 @@ import 'dart:ui';
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:portfolio/app/helpers/constants/constant_variables.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
 
@@ -43,9 +44,9 @@ class ContactSection extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           "Let’s Build Something\nAmazing Together.",
-                          style: TextStyle(
+                          style: theme.bodyMedium!.copyWith(
                             fontSize: 48,
                             fontWeight: FontWeight.bold,
                             height: 1.2,
@@ -59,7 +60,7 @@ class ContactSection extends StatelessWidget {
                           "Have a project in mind, a startup idea, "
                           "or just want to collaborate? "
                           "I’m always open to meaningful conversations.",
-                          style: TextStyle(
+                          style: theme.bodyMedium!.copyWith(
                             fontSize: 18,
                             height: 1.8,
                             color: Colors.white.withOpacity(0.7),
@@ -77,9 +78,9 @@ class ContactSection extends StatelessWidget {
                               color: const Color(0xFF8B5CF6),
                             ),
                             const SizedBox(width: 12),
-                            const Text(
+                            Text(
                               "CONNECT WITH ME",
-                              style: TextStyle(
+                              style: theme.bodyMedium!.copyWith(
                                 color: Color(0xFF8B5CF6),
                                 letterSpacing: 1.5,
                                 fontWeight: FontWeight.bold,
@@ -94,7 +95,7 @@ class ContactSection extends StatelessWidget {
                         Text(
                           "Prefer social? Reach out through any platform below.",
 
-                          style: TextStyle(
+                          style: theme.bodyMedium!.copyWith(
                             fontSize: 16,
                             height: 1.6,
                             color: Colors.white.withOpacity(0.65),
@@ -340,9 +341,9 @@ class _PortfolioFooter extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     "Sourav",
-                    style: TextStyle(
+                    style: theme.bodyMedium!.copyWith(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
@@ -355,9 +356,10 @@ class _PortfolioFooter extends StatelessWidget {
                     "Building scalable mobile and AI-powered "
                     "applications using Flutter, FastAPI, and "
                     "modern cloud technologies.",
-                    style: TextStyle(
+                    style: theme.bodyMedium!.copyWith(
                       color: Colors.white.withOpacity(0.6),
                       height: 1.6,
+                      fontSize: 14,
                     ),
                   ),
                 ],
@@ -370,6 +372,7 @@ class _PortfolioFooter extends StatelessWidget {
             Expanded(
               child: _FooterColumn(
                 title: "Navigation",
+
                 children: [
                   _FooterLink("Home", index: 0, onTap: onMenuTap),
                   _FooterLink("About", index: 1, onTap: onMenuTap),
@@ -395,11 +398,23 @@ class _PortfolioFooter extends StatelessWidget {
             /// LEGAL
             Expanded(
               child: _FooterColumn(
-                title: "Legal",
+                title: "Projects",
                 children: const [
                   _FooterLink(
-                    "Privacy Policy",
-                    route: "/legal/paper-trading/privacy-policy",
+                    "Talksy",
+                    url: "https://github.com/Sourav0174/talksy_chat_app",
+                  ),
+                  _FooterLink(
+                    "RiseAbove",
+                    url: "https://github.com/Sourav0174/riseabove_frontend",
+                  ),
+                  _FooterLink(
+                    "Flexx",
+                    url: "https://github.com/Sourav0174/flexx_app/tree/master",
+                  ),
+                  _FooterLink(
+                    "LinkUp",
+                    url: "https://github.com/Sourav0174/LinkUp_message_app_UI",
                   ),
                 ],
               ),
@@ -412,7 +427,10 @@ class _PortfolioFooter extends StatelessWidget {
         /// Bottom text
         Text(
           "© 2026 Sourav — Built with Flutter",
-          style: TextStyle(color: Colors.white.withOpacity(0.5), fontSize: 12),
+          style: theme.bodyMedium!.copyWith(
+            color: Colors.white.withOpacity(0.5),
+            fontSize: 12,
+          ),
         ),
       ],
     );
@@ -432,9 +450,10 @@ class _FooterColumn extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(
+          style: theme.bodyMedium!.copyWith(
             color: Colors.white,
             fontWeight: FontWeight.bold,
+            fontSize: 18,
           ),
         ),
 
@@ -453,8 +472,9 @@ class _FooterLink extends StatefulWidget {
   final String? route;
   final int? index;
   final Function(int)? onTap;
+  final String? url;
 
-  const _FooterLink(this.text, {this.route, this.index, this.onTap});
+  const _FooterLink(this.text, {this.route, this.index, this.onTap, this.url});
 
   @override
   State<_FooterLink> createState() => _FooterLinkState();
@@ -470,16 +490,21 @@ class _FooterLinkState extends State<_FooterLink> {
       onEnter: (_) => setState(() => hover = true),
       onExit: (_) => setState(() => hover = false),
       child: GestureDetector(
-        onTap: () {
+        onTap: () async {
           if (widget.index != null && widget.onTap != null) {
-            widget.onTap!(widget.index!); // 🔥 scroll
+            widget.onTap!(widget.index!); // scroll
           } else if (widget.route != null) {
-            Get.toNamed(widget.route!); // 🔁 fallback
+            Get.toNamed(widget.route!); // internal route
+          } else if (widget.url != null) {
+            final uri = Uri.parse(widget.url!);
+            if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+              debugPrint("Could not launch ${widget.url}");
+            }
           }
         },
         child: AnimatedDefaultTextStyle(
           duration: const Duration(milliseconds: 200),
-          style: TextStyle(
+          style: theme.bodyMedium!.copyWith(
             color: hover
                 ? const Color(0xFF8B5CF6)
                 : Colors.white.withOpacity(0.6),
@@ -560,7 +585,7 @@ class _SocialIconState extends State<_SocialIcon> {
               /// LABEL
               Text(
                 widget.label,
-                style: const TextStyle(
+                style: theme.bodyMedium!.copyWith(
                   color: Colors.white,
                   fontWeight: FontWeight.w600,
                   fontSize: 14,
@@ -727,10 +752,10 @@ class _GlowButtonState extends State<_GlowButton>
   Widget _buildChild() {
     switch (_state) {
       case ButtonState.idle:
-        return const Text(
+        return Text(
           "Send Message",
           key: ValueKey("text"),
-          style: TextStyle(
+          style: theme.bodyMedium!.copyWith(
             fontWeight: FontWeight.bold,
             color: Colors.white,
             fontSize: 16,
@@ -912,10 +937,12 @@ class _ContactField extends StatelessWidget {
     return TextField(
       controller: controller,
       maxLines: maxLines,
-      style: const TextStyle(color: Colors.white),
+      style: theme.bodyMedium!.copyWith(color: Colors.white),
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle: TextStyle(color: Colors.white.withOpacity(0.5)),
+        hintStyle: theme.bodyMedium!.copyWith(
+          color: Colors.white.withOpacity(0.5),
+        ),
         filled: true,
         fillColor: Colors.white.withOpacity(0.05),
         contentPadding: const EdgeInsets.symmetric(

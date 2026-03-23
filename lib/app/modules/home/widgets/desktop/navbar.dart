@@ -90,7 +90,7 @@ class _DesktopMenu extends StatelessWidget {
               ),
               child: Text(
                 items[index].toUpperCase(),
-                style: theme.bodyMedium!.copyWith(),
+                style: theme.bodyMedium!.copyWith(fontSize: 15),
               ),
             ),
           ),

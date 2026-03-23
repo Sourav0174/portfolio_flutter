@@ -53,7 +53,7 @@ class ProjectsSectionMobile extends StatelessWidget {
 
               /// 🚀 HORIZONTAL PROJECT CARDS
               SizedBox(
-                height: 420,
+                height: 440,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   physics: const BouncingScrollPhysics(),
@@ -63,7 +63,12 @@ class ProjectsSectionMobile extends StatelessWidget {
 
                     return Container(
                       width: 300,
-                      margin: const EdgeInsets.only(left: 20, right: 10),
+                      margin: const EdgeInsets.only(
+                        left: 20,
+                        right: 10,
+                        bottom: 20,
+                      ),
+                      // padding: const EdgeInsets.only(bottom: 40),
                       child: ProjectCardMobile(project: project),
                     );
                   },
