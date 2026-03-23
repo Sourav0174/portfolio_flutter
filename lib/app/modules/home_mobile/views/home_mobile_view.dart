@@ -37,6 +37,9 @@ class _HomeMobileViewState extends State<HomeMobileView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.transparent,
+        scrolledUnderElevation: 0,
         centerTitle: true,
         title: Text(
           "Sourav",
@@ -47,6 +50,9 @@ class _HomeMobileViewState extends State<HomeMobileView> {
         ),
         actions: [
           PopupMenuButton<int>(
+            color: Colors.white,
+            surfaceTintColor: Colors.transparent,
+
             onSelected: (index) {
               switch (index) {
                 case 0:
