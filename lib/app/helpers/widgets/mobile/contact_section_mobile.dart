@@ -22,7 +22,7 @@ class ContactSectionMobile extends StatelessWidget {
         children: [
           const Positioned.fill(
             child: Padding(
-              padding: EdgeInsets.only(bottom: 20),
+              padding: EdgeInsets.only(top: 20),
               child: AnimatedParticles(),
             ),
           ),
