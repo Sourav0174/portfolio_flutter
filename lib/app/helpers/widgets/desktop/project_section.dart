@@ -40,7 +40,6 @@ final List<Project> projects = [
       "assets/projects/bellabites3.jpg",
       "assets/projects/bellabites4.jpg",
       "assets/projects/bellabites5.jpg",
-      "assets/projects/bellabites6.jpg",
     ],
     techStack: ["Flutter", "UI Design"],
     github: "https://github.com/Sourav0174/LinkUp_message_app_UI/tree/master",
