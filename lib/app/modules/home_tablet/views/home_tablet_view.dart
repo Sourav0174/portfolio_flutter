@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/app/helpers/widgets/desktop/hero_section.dart';
-import 'package:portfolio/app/modules/home/widgets/desktop/navbar.dart';
 
 class HomeTabletView extends StatelessWidget {
   const HomeTabletView({super.key});

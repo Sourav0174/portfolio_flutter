@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/app/helpers/widgets/desktop/about_section.dart';
-import 'package:portfolio/app/helpers/widgets/desktop/contact_section.dart';
-import 'package:portfolio/app/helpers/widgets/desktop/experience_section.dart';
 import 'package:portfolio/app/helpers/widgets/mobile/about_section_mobile.dart';
 import 'package:portfolio/app/helpers/widgets/mobile/contact_section_mobile.dart';
 import 'package:portfolio/app/helpers/widgets/mobile/experience_section_mobile.dart';
 import 'package:portfolio/app/helpers/widgets/mobile/project_section_mobile.dart';
-import 'package:portfolio/app/modules/home/widgets/desktop/navbar.dart';
-import 'package:portfolio/app/modules/home/widgets/desktop/profile_image.dart';
 import 'package:portfolio/app/helpers/widgets/mobile/hero_section_mobile.dart';
 
 class HomeMobileView extends StatefulWidget {

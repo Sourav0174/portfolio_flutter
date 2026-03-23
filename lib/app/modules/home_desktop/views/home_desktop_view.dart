@@ -7,7 +7,7 @@ import 'package:portfolio/app/helpers/widgets/desktop/hero_section.dart';
 import 'package:portfolio/app/modules/home/widgets/desktop/navbar.dart';
 
 class HomeDesktopView extends StatefulWidget {
-  HomeDesktopView({super.key});
+  const HomeDesktopView({super.key});
 
   @override
   State<HomeDesktopView> createState() => _HomeDesktopViewState();
