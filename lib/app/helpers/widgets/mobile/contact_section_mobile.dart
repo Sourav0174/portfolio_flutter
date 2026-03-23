@@ -20,7 +20,12 @@ class ContactSectionMobile extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          const Positioned.fill(child: AnimatedParticles()),
+          const Positioned.fill(
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 20),
+              child: AnimatedParticles(),
+            ),
+          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
