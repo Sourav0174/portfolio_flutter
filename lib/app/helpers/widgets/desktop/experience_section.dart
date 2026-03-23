@@ -442,7 +442,7 @@ class Experience {
 final List<Experience> experiences = [
   Experience(
     year: "Aug 2025 to Jan 2026",
-    role: " Software Developer Intern",
+    role: "Software Developer Intern",
     company: "Appknit",
     tech: ["Flutter", "GetX", "Firebase"],
     highlights: [

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:portfolio/app/helpers/constants/constant_variables.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HeroSectionMobile extends StatelessWidget {
@@ -32,13 +33,13 @@ class HeroSectionMobile extends StatelessWidget {
                 alignment: Alignment.center,
                 children: [
                   Container(
-                    height: 180,
-                    width: 180,
+                    height: 200,
+                    width: 200,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       gradient: RadialGradient(
                         colors: [
-                          Colors.white.withOpacity(0.3),
+                          Colors.white.withOpacity(0.2),
                           Colors.transparent,
                         ],
                       ),
@@ -49,7 +50,7 @@ class HeroSectionMobile extends StatelessWidget {
                     borderRadius: BorderRadius.circular(100),
                     child: Image.asset(
                       "assets/images/profile2.png",
-                      height: 160,
+                      height: 200,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -59,7 +60,7 @@ class HeroSectionMobile extends StatelessWidget {
               .fadeIn(duration: 600.ms)
               .scale(begin: const Offset(0.8, 0.8)),
 
-          const SizedBox(height: 24),
+          const SizedBox(height: 16),
 
           /// 👋 SMALL TEXT
           const Text(
@@ -102,19 +103,22 @@ class HeroSectionMobile extends StatelessWidget {
 
           /// 🟢 AVAILABLE BADGE
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
             decoration: BoxDecoration(
               color: Colors.white.withOpacity(0.15),
               borderRadius: BorderRadius.circular(30),
             ),
-            child: const Row(
+            child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(Icons.circle, size: 10, color: Color(0XFFF3904F)),
                 SizedBox(width: 8),
                 Text(
                   "Available for work",
-                  style: TextStyle(color: Colors.white),
+                  style: theme.bodyMedium!.copyWith(
+                    color: Colors.white,
+                    fontSize: 12,
+                  ),
                 ),
               ],
             ),
@@ -130,7 +134,10 @@ class HeroSectionMobile extends StatelessWidget {
               ElevatedButton.icon(
                 onPressed: _downloadResume,
                 icon: const Icon(Icons.download),
-                label: const Text("Resume"),
+                label: Text(
+                  "Resume",
+                  style: theme.bodyMedium!.copyWith(fontSize: 12),
+                ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
                   foregroundColor: Colors.black,
@@ -141,19 +148,19 @@ class HeroSectionMobile extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(width: 12),
+              // const SizedBox(width: 12),
 
               /// CONTACT
-              OutlinedButton(
-                onPressed: () {},
-                style: OutlinedButton.styleFrom(
-                  side: const BorderSide(color: Colors.white),
-                ),
-                child: const Text(
-                  "Contact",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
+              // OutlinedButton(
+              //   onPressed: () {},
+              //   style: OutlinedButton.styleFrom(
+              //     side: const BorderSide(color: Colors.white),
+              //   ),
+              //   child: const Text(
+              //     "Contact",
+              //     style: TextStyle(color: Colors.white),
+              //   ),
+              // ),
             ],
           ).animate().fadeIn(delay: 700.ms),
         ],

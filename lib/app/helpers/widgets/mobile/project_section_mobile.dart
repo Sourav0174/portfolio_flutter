@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:portfolio/app/helpers/constants/constant_variables.dart';
 import 'package:portfolio/app/helpers/widgets/desktop/project_section.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -22,11 +23,11 @@ class ProjectsSectionMobile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               /// 🔥 TITLE
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
                   "Featured Work",
-                  style: TextStyle(
+                  style: theme.bodyMedium!.copyWith(
                     fontSize: 14,
                     letterSpacing: 1.2,
                     color: Color(0xff6366F1),
@@ -37,11 +38,14 @@ class ProjectsSectionMobile extends StatelessWidget {
 
               const SizedBox(height: 10),
 
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
                   "Apps I've Built",
-                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                  style: theme.bodyMedium!.copyWith(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
 
@@ -119,7 +123,7 @@ class ProjectCardMobile extends StatelessWidget {
                 /// TITLE
                 Text(
                   project.title,
-                  style: const TextStyle(
+                  style: theme.bodyMedium!.copyWith(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -132,7 +136,7 @@ class ProjectCardMobile extends StatelessWidget {
                   project.description,
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
+                  style: theme.bodyMedium!.copyWith(
                     fontSize: 13,
                     height: 1.4,
                     color: Colors.black54,
@@ -155,7 +159,10 @@ class ProjectCardMobile extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                         color: const Color(0xffEEF2FF),
                       ),
-                      child: Text(tech, style: const TextStyle(fontSize: 11)),
+                      child: Text(
+                        tech,
+                        style: theme.bodyMedium!.copyWith(fontSize: 11),
+                      ),
                     );
                   }).toList(),
                 ),
@@ -167,9 +174,10 @@ class ProjectCardMobile extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () => launchUrl(Uri.parse(project.github)),
-                      child: const Text(
+                      child: Text(
                         "View Code",
-                        style: TextStyle(
+                        style: theme.bodyMedium!.copyWith(
+                          fontSize: 13,
                           color: Color(0xff6366F1),
                           fontWeight: FontWeight.w600,
                         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:portfolio/app/helpers/constants/constant_variables.dart';
 import 'package:portfolio/app/helpers/widgets/desktop/experience_section.dart';
 
 class ExperienceSectionMobile extends StatelessWidget {
@@ -8,7 +9,6 @@ class ExperienceSectionMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [Color(0xfff8fafc), Colors.white],
@@ -24,62 +24,68 @@ class ExperienceSectionMobile extends StatelessWidget {
               child: CustomPaint(painter: _GridPainter()),
             ),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              /// 🔥 HEADER
-              ShaderMask(
-                shaderCallback: (bounds) => const LinearGradient(
-                  colors: [
-                    Color(0xff6366f1),
-                    Color.fromARGB(255, 189, 118, 255),
-                  ],
-                ).createShader(bounds),
-                child: const Text(
-                  "My Journey",
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    // letterSpacing: -1,
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                /// 🔥 HEADER
+                ShaderMask(
+                  shaderCallback: (bounds) => const LinearGradient(
+                    colors: [
+                      Color(0xff6366f1),
+                      Color.fromARGB(255, 189, 118, 255),
+                    ],
+                  ).createShader(bounds),
+                  child: Text(
+                    "My Journey",
+                    style: theme.bodyMedium!.copyWith(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      // letterSpacing: -1,
+                    ),
                   ),
                 ),
-              ),
 
-              // const Text(
-              //   "My Journey",
-              //   style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-              // ),
-              const SizedBox(height: 10),
+                // const Text(
+                //   "My Journey",
+                //   style: theme.bodyMedium!.copyWith(fontSize: 28, fontWeight: FontWeight.bold),
+                // ),
+                const SizedBox(height: 10),
 
-              const Text(
-                "From learning to building real-world scalable apps.",
-                style: TextStyle(color: Colors.grey),
-              ),
+                Text(
+                  "From learning to building real-world scalable apps.",
+                  style: theme.bodyMedium!.copyWith(
+                    color: Colors.grey,
+                    fontSize: 12,
+                  ),
+                ),
 
-              const SizedBox(height: 30),
+                const SizedBox(height: 30),
 
-              /// 📊 STATS
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  _StatItemMobile("10+", "Projects"),
-                  _StatItemMobile("3", "Apps"),
-                  _StatItemMobile("AI", "Focus"),
-                ],
-              ),
+                /// 📊 STATS
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    _StatItemMobile("10+", "Projects"),
+                    _StatItemMobile("3", "Apps"),
+                    _StatItemMobile("AI", "Focus"),
+                  ],
+                ),
 
-              const SizedBox(height: 30),
+                const SizedBox(height: 30),
 
-              /// 🚀 EXPERIENCE LIST
-              Column(
-                children: List.generate(experiences.length, (index) {
-                  final exp = experiences[index];
+                /// 🚀 EXPERIENCE LIST
+                Column(
+                  children: List.generate(experiences.length, (index) {
+                    final exp = experiences[index];
 
-                  return ExperienceCardMobile(exp: exp, index: index);
-                }),
-              ),
-            ],
+                    return ExperienceCardMobile(exp: exp, index: index);
+                  }),
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -119,19 +125,28 @@ class ExperienceCardMobile extends StatelessWidget {
           /// 📅 YEAR + ROLE
           Text(
             exp.year,
-            style: const TextStyle(color: Colors.grey, fontSize: 12),
+            style: theme.bodyMedium!.copyWith(color: Colors.grey, fontSize: 12),
           ),
 
           const SizedBox(height: 6),
 
           Text(
             exp.role,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: theme.bodyMedium!.copyWith(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
           ),
 
           const SizedBox(height: 4),
 
-          Text(exp.company, style: TextStyle(color: Colors.grey.shade600)),
+          Text(
+            exp.company,
+            style: theme.bodyMedium!.copyWith(
+              color: Colors.grey.shade600,
+              fontSize: 12,
+            ),
+          ),
 
           const SizedBox(height: 16),
 
@@ -156,7 +171,7 @@ class ExperienceCardMobile extends StatelessWidget {
                     Expanded(
                       child: Text(
                         item,
-                        style: const TextStyle(
+                        style: theme.bodyMedium!.copyWith(
                           fontSize: 13,
                           height: 1.5,
                           color: Colors.black87,
@@ -208,10 +223,16 @@ class _StatItemMobile extends StatelessWidget {
       children: [
         Text(
           value,
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: theme.bodyMedium!.copyWith(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
         ),
-        const SizedBox(height: 4),
-        Text(label, style: const TextStyle(fontSize: 12, color: Colors.grey)),
+        SizedBox(height: 4),
+        Text(
+          label,
+          style: theme.bodyMedium!.copyWith(fontSize: 12, color: Colors.grey),
+        ),
       ],
     );
   }
