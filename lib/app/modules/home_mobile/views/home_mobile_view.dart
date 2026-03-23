@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/app/helpers/constants/constant_variables.dart';
 import 'package:portfolio/app/helpers/widgets/mobile/about_section_mobile.dart';
 import 'package:portfolio/app/helpers/widgets/mobile/contact_section_mobile.dart';
 import 'package:portfolio/app/helpers/widgets/mobile/experience_section_mobile.dart';
@@ -36,7 +37,14 @@ class _HomeMobileViewState extends State<HomeMobileView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Sourav"),
+        centerTitle: true,
+        title: Text(
+          "Sourav",
+          style: theme.bodyMedium!.copyWith(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         actions: [
           PopupMenuButton<int>(
             onSelected: (index) {
@@ -58,12 +66,42 @@ class _HomeMobileViewState extends State<HomeMobileView> {
                   break;
               }
             },
-            itemBuilder: (context) => const [
-              PopupMenuItem(value: 0, child: Text("Home")),
-              PopupMenuItem(value: 1, child: Text("About")),
-              PopupMenuItem(value: 2, child: Text("Projects")),
-              PopupMenuItem(value: 3, child: Text("Experience")),
-              PopupMenuItem(value: 4, child: Text("Contact")),
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                value: 0,
+                child: Text(
+                  "Home",
+                  style: theme.bodyMedium!.copyWith(fontSize: 15),
+                ),
+              ),
+              PopupMenuItem(
+                value: 1,
+                child: Text(
+                  "About",
+                  style: theme.bodyMedium!.copyWith(fontSize: 15),
+                ),
+              ),
+              PopupMenuItem(
+                value: 2,
+                child: Text(
+                  "Projects",
+                  style: theme.bodyMedium!.copyWith(fontSize: 15),
+                ),
+              ),
+              PopupMenuItem(
+                value: 3,
+                child: Text(
+                  "Experience",
+                  style: theme.bodyMedium!.copyWith(fontSize: 15),
+                ),
+              ),
+              PopupMenuItem(
+                value: 4,
+                child: Text(
+                  "Contact",
+                  style: theme.bodyMedium!.copyWith(fontSize: 15),
+                ),
+              ),
             ],
           ),
         ],

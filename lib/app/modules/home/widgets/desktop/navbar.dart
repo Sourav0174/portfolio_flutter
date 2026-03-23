@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/app/helpers/constants/app_colors.dart';
+import 'package:portfolio/app/helpers/constants/constant_variables.dart';
 
 class Navbar extends StatelessWidget {
   final Function(int) onMenuTap;
@@ -87,7 +88,10 @@ class _DesktopMenu extends StatelessWidget {
                   width: 1.3,
                 ),
               ),
-              child: Text(items[index].toUpperCase(),style: TextStyle(),),
+              child: Text(
+                items[index].toUpperCase(),
+                style: theme.bodyMedium!.copyWith(),
+              ),
             ),
           ),
         );
@@ -101,7 +105,7 @@ class _ContactButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Text("+91 9041618674", style: TextStyle(fontSize: 14)),
+        Text("+91 9041618674", style: theme.bodyMedium!.copyWith(fontSize: 14)),
         const SizedBox(width: 8),
         Container(
           height: 40,
@@ -212,7 +216,7 @@ class _AnimatedGreetingState extends State<AnimatedGreeting>
         position: _slideAnimation,
         child: Text(
           greetings[currentIndex],
-          style: GoogleFonts.shadowsIntoLight(
+          style: theme.bodyMedium!.copyWith(
             fontSize: 22,
             fontWeight: FontWeight.bold,
             letterSpacing: 1.2,
