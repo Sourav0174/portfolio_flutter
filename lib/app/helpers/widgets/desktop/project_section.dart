@@ -1,8 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:portfolio/app/helpers/constants/constant_variables.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 final List<Project> projects = [
+  Project(
+    title: "Paper Trade",
+    description:
+        "Paper Trade is a stock market app built with Flutter and FastAPI currently in progress. It offers real-time market data, virtual trading, and portfolio management features, providing users with a risk-free environment to practice trading strategies and learn about the stock market.",
+    image: [
+      "assets/projects/pt1.png",
+      "assets/projects/pt2.png",
+      "assets/projects/pt3.png",
+      "assets/projects/pt4.png",
+      "assets/projects/pt5.png",
+      "assets/projects/pt6.png",
+    ],
+
+    techStack: ["Flutter", "FastAPI", "GetX"],
+    github: "https://github.com/Sourav0174/paper-trade-FE",
+  ),
   Project(
     title: "Talksy",
     description:
@@ -99,9 +116,10 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                         color: const Color(0xffEEF2FF),
                         borderRadius: BorderRadius.circular(30),
                       ),
-                      child: const Text(
+                      child: Text(
                         "FEATURED WORK",
-                        style: TextStyle(
+                        style: theme.bodyMedium!.copyWith(
+                          fontSize: 14,
                           fontWeight: FontWeight.w600,
                           color: Color(0xff6366F1),
                           letterSpacing: 1.2,
@@ -128,7 +146,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                       child: Text(
                         "A selection of products I've designed and engineered — "
                         "more are coming!",
-                        style: const TextStyle(
+                        style: theme.bodyMedium!.copyWith(
                           fontSize: 18,
                           color: Colors.black54,
                           height: 1.6,
@@ -229,7 +247,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       transform: Matrix4.identity()..scale(isActive ? 1.02 : 1.0),
       duration: const Duration(milliseconds: 250),
       margin: const EdgeInsets.only(bottom: 20, right: 40),
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(22),
         color: Colors.white,
@@ -279,7 +297,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
               children: [
                 Text(
                   p.title,
-                  style: const TextStyle(
+                  style: theme.bodyMedium!.copyWith(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -291,7 +309,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                   p.description,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
+                  style: theme.bodyMedium!.copyWith(
                     fontSize: 14,
                     height: 1.4,
                     color: Colors.black54,
@@ -316,7 +334,10 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                             colors: [Color(0xffEEF2FF), Color(0xffE0E7FF)],
                           ),
                         ),
-                        child: Text(tech, style: const TextStyle(fontSize: 12)),
+                        child: Text(
+                          tech,
+                          style: theme.bodyMedium!.copyWith(fontSize: 12),
+                        ),
                       ),
                     );
                   }).toList(),
@@ -328,9 +349,10 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                   children: [
                     GestureDetector(
                       onTap: () => launchUrl(Uri.parse(p.github)),
-                      child: const Text(
+                      child: Text(
                         "View Code",
-                        style: TextStyle(
+                        style: theme.bodyMedium!.copyWith(
+                          fontSize: 18,
                           color: Color(0xff6366F1),
                           fontWeight: FontWeight.w600,
                         ),

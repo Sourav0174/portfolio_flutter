@@ -105,6 +105,12 @@ flutter:
     - "assets/projects/bellabites3.jpg"
     - "assets/projects/bellabites4.jpg"
     - "assets/projects/bellabites5.jpg"
+    - "assets/projects/pt1.png"
+    - "assets/projects/pt2.png"
+    - "assets/projects/pt3.png"
+    - "assets/projects/pt4.png"
+    - "assets/projects/pt5.png"
+    - "assets/projects/pt6.png"
 
     - assets/images/socialIcons/x.png
   #   - images/a_dot_burr.jpeg

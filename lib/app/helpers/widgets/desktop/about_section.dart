@@ -118,12 +118,12 @@ class AboutSection extends StatelessWidget {
                     TechBadge(
                       title: "Python",
                       imagePath: "assets/techIcons/python.png",
-                      color: Color(0XFF3C873A),
+                      color: Color.fromARGB(255, 29, 88, 249),
                     ),
                     TechBadge(
                       title: "PostgreSQL",
                       imagePath: "assets/techIcons/postgresql.png",
-                      color: Color(0XFF47A248),
+                      color: Color.fromARGB(255, 71, 115, 162),
                     ),
                     TechBadge(
                       title: "MongoDB",
