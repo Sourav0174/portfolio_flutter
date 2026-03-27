@@ -52,14 +52,14 @@ class AboutSection extends StatelessWidget {
                       color: Colors.black,
                     ),
                     children: const [
-                      TextSpan(text: "I build "),
+                      TextSpan(text: "Building "),
                       TextSpan(
-                        text: "fast, scalable",
+                        text: "high-performance, scalable,",
                         style: TextStyle(color: Color(0xFF2F4F4F)),
                       ),
                       TextSpan(text: " and "),
                       TextSpan(
-                        text: "intelligent",
+                        text: "user-focused",
                         style: TextStyle(color: Color(0xFF2F4F4F)),
                       ),
                       TextSpan(text: " digital products."),
@@ -70,12 +70,9 @@ class AboutSection extends StatelessWidget {
                 const SizedBox(height: 25),
 
                 Text(
-                  "I'm Sourav — a Flutter engineer focused on architecture, performance, "
-                  "and building scalable systems.\n"
-                  "I care about clean code, strong structure, and user experiences "
-                  "that don't just work — but feel smooth.\n"
-                  "Currently exploring AI systems and backend engineering "
-                  "to build intelligent full-stack products.",
+                  "I'm Sourav — a Flutter engineer focused on building scalable, production-grade applications with clean architecture and strong fundamentals.\n"
+                  "I approach development with a focus on performance, maintainability, and delivering seamless user experiences.\n"
+                  "Beyond frontend, I work with backend systems and actively explore AI to build intelligent, full-stack products that solve real-world problems.",
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontSize: 18,
                     height: 1.9,
@@ -146,12 +143,12 @@ class AboutSection extends StatelessWidget {
                       color: Color(0XFF02569B),
                     ),
                     TechBadge(
-                      title: "ChatGPT",
+                      title: "OpenAI / LLM Integration",
                       imagePath: "assets/techIcons/chatgpt.png",
                       color: Colors.black12,
                     ),
                     TechBadge(
-                      title: "Gemini",
+                      title: "AI Integration (Gemini, APIs)",
                       imagePath: "assets/techIcons/gemini.png",
                       color: Color(0XFF02569B),
                     ),
@@ -294,7 +291,7 @@ class AboutSection extends StatelessWidget {
                                           ),
                                           const SizedBox(height: 4),
                                           Text(
-                                            "Flutter • AI Explorer",
+                                            "Software Developer • Building Intelligent Systems",
                                             style: TextStyle(
                                               color: Colors.white.withOpacity(
                                                 0.85,

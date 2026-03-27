@@ -84,7 +84,7 @@ class HeroSection extends StatelessWidget {
                               const TextSpan(text: "\n\n"),
                               TextSpan(
                                 text:
-                                    "Flutter Developer • Freelancer • UI Enthusiast",
+                                    "Flutter Engineer • Building Scalable Mobile & Web Applications",
                                 style: theme.bodyMedium!.copyWith(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w500,
@@ -110,7 +110,7 @@ class HeroSection extends StatelessWidget {
                         width: 360,
                         child:
                             Text(
-                                  "Turning Ideas\nInto Scalable Apps",
+                                  "Designing & Shipping\nHigh-Performance Apps",
                                   style: theme.bodyMedium!.copyWith(
                                     fontSize: 54,
                                     fontWeight: FontWeight.w900,
@@ -139,7 +139,7 @@ class HeroSection extends StatelessWidget {
                         // right: 0,
                         width: 360,
                         child: Text(
-                          "I help startups and businesses design and build fast, scalable, and production-ready Flutter apps — from idea to launch.",
+                          "I collaborate with startups and businesses to design, build, and ship high-performance Flutter applications — focusing on clean architecture, scalability, and real-world impact.",
                           style: theme.bodyMedium!.copyWith(
                             fontSize: 17,
                             height: 1.8,
@@ -212,7 +212,7 @@ class HeroSection extends StatelessWidget {
                                       ),
                                       const SizedBox(width: 12),
                                       Text(
-                                        "Available for work!",
+                                        "Open to Opportunities",
                                         style: theme.bodyMedium!.copyWith(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w600,
@@ -258,7 +258,7 @@ class HeroSection extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              "DSA Problems Solved",
+                              "DSA Problems • Strong Problem-Solving ",
                               style: theme.bodyMedium!.copyWith(
                                 fontSize: 14,
                                 letterSpacing: 1.3,
@@ -359,7 +359,7 @@ class _HeroCTAState extends State<HeroCTA> {
   bool isDownloading = false;
 
   final String resumeUrl =
-      "https://drive.google.com/uc?export=download&id=19OxYRcdqiiYL-X11O5t2-lmHLqEoZBNq";
+      "https://drive.google.com/uc?export=download&id=1sT-pqTbXT8lJQSAsCKeUBMaAa4pmuZtP";
 
   Future<void> _downloadResume() async {
     setState(() => isDownloading = true);

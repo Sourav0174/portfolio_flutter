@@ -7,7 +7,7 @@ class HeroSectionMobile extends StatelessWidget {
   const HeroSectionMobile({super.key});
 
   final String resumeUrl =
-      "https://drive.google.com/uc?export=download&id=19OxYRcdqiiYL-X11O5t2-lmHLqEoZBNq";
+      "https://drive.google.com/uc?export=download&id=1sT-pqTbXT8lJQSAsCKeUBMaAa4pmuZtP";
 
   Future<void> _downloadResume() async {
     final uri = Uri.parse(resumeUrl);

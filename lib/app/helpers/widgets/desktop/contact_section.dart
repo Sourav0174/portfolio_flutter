@@ -45,7 +45,7 @@ class ContactSection extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Let’s Build Something\nAmazing Together.",
+                          "Let’s Build Scalable\nProducts That Matter.",
                           style: theme.bodyMedium!.copyWith(
                             fontSize: 48,
                             fontWeight: FontWeight.bold,
@@ -57,9 +57,9 @@ class ContactSection extends StatelessWidget {
                         const SizedBox(height: 30),
 
                         Text(
-                          "Have a project in mind, a startup idea, "
-                          "or just want to collaborate? "
-                          "I’m always open to meaningful conversations.",
+                          "Have a product idea, "
+                          "need to scale an existing app, "
+                          "or looking for a reliable developer to ship features fast? I’m open to meaningful collaborations and opportunities.",
                           style: theme.bodyMedium!.copyWith(
                             fontSize: 18,
                             height: 1.8,
@@ -474,7 +474,7 @@ class _FooterLink extends StatefulWidget {
   final Function(int)? onTap;
   final String? url;
 
-  const _FooterLink(this.text, {this.route, this.index, this.onTap, this.url});
+  const _FooterLink(this.text, {this.index, this.onTap, this.url, this.route});
 
   @override
   State<_FooterLink> createState() => _FooterLinkState();

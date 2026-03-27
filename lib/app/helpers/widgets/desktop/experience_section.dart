@@ -441,18 +441,18 @@ class Experience {
 
 final List<Experience> experiences = [
   Experience(
-    year: "Aug 2025 to Jan 2026",
+    year: "Aug 2025 – Jan 2026",
     role: "Software Developer Intern",
     company: "Appknit",
-    tech: ["Flutter", "GetX", "Firebase"],
+    tech: ["Flutter", "Bloc", "Firebase", "Clean Architecture"],
     highlights: [
-      "Built 3 production ready apps",
-      "Implemented clean architecture",
-      "Integrated Firebase authentication",
-      "Developed scalable Bloc systems",
+      "Engineered and shipped 3 production-ready Flutter applications with scalable architecture",
+      "Implemented clean architecture patterns to improve code maintainability and scalability",
+      "Designed and integrated real-time features using Firebase (authentication, database, messaging)",
+      "Developed robust state management solutions using Bloc for complex application flows",
     ],
     description:
-        "Focused on building real-world products including Flexx, LinkUp and RiseAbove.",
+        "Worked on building and shipping real-world applications including Flexx, LinkUp, and RiseAbove — focusing on performance, scalability, and production-level code quality.",
   ),
 ];
 
@@ -469,7 +469,7 @@ class _SectionHeader extends StatelessWidget {
             colors: [Color(0xff6366f1), Color.fromARGB(255, 189, 118, 255)],
           ).createShader(bounds),
           child: const Text(
-            "My Journey",
+            "Professional Experience",
             style: TextStyle(
               fontSize: 52,
               fontWeight: FontWeight.bold,
@@ -482,7 +482,7 @@ class _SectionHeader extends StatelessWidget {
         const SizedBox(height: 14),
 
         const Text(
-          "From learning programming fundamentals to building AI-powered mobile applications.",
+          "Focused on building scalable applications, clean architectures, and real-world product experiences.",
           style: TextStyle(fontSize: 18, height: 1.6, color: Colors.grey),
         ),
 

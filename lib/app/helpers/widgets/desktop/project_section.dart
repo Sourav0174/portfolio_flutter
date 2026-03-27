@@ -7,7 +7,7 @@ final List<Project> projects = [
   Project(
     title: "Paper Trade",
     description:
-        "Paper Trade is a stock market app built with Flutter and FastAPI currently in progress. It offers real-time market data, virtual trading, and portfolio management features, providing users with a risk-free environment to practice trading strategies and learn about the stock market.",
+        "(Currently in progress) Paper Trade is a scalable stock market simulation platform built with Flutter and FastAPI, designed to replicate real-world trading environments. It focuses on real-time data handling, portfolio tracking, and performance-driven architecture — enabling users to practice trading strategies in a risk-free ecosystem while ensuring system reliability and responsiveness.",
     image: [
       "assets/projects/pt1.png",
       "assets/projects/pt2.png",
@@ -23,7 +23,7 @@ final List<Project> projects = [
   Project(
     title: "Talksy",
     description:
-        "Talksy is a modern real-time chat application built with Flutter and Firebase — designed for seamless, fast, and secure conversations. Inspired by the simplicity of WhatsApp and powered by scalable cloud infrastructure, Talksy is your playground for building smart social experiences.",
+        "Talksy is a real-time messaging application built with Flutter and Firebase, engineered for low-latency communication and seamless user experience. It demonstrates scalable chat architecture, real-time synchronization, and clean state management using Bloc.",
     image: [
       "assets/projects/talksy0.jpg",
       "assets/projects/talksy1.jpg",
@@ -36,7 +36,7 @@ final List<Project> projects = [
   Project(
     title: "Flexx",
     description:
-        "A social media platform with AI chatbot, modern UI, and real-time features built with Flutter and Firebase.",
+        "Flexx is a social media platform integrating real-time features with AI-powered interactions. Built using Flutter and Firebase, it focuses on scalable architecture, dynamic UI systems, and intelligent user engagement through chatbot integration.",
     image: [
       "assets/projects/flexx1.jpg",
       "assets/projects/flexx2.jpg",
@@ -49,7 +49,7 @@ final List<Project> projects = [
   Project(
     title: "Bella Bite",
     description:
-        "BellaBite is a beautifully designed food delivery app UI built using Flutter. Inspired by the richness of Italian cuisine, this app UI provides a clean, modern, and fully responsive experience – ideal for any food ordering or restaurant app concept.",
+        "LinkUp is a messaging UI system designed with advanced neumorphism and smooth interaction patterns. It showcases expertise in UI architecture, animation design, and building visually rich user interfaces in Flutter.",
     image: [
       "assets/projects/bellabites0.jpg",
       "assets/projects/bellabites1.jpg",
@@ -130,7 +130,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                     const SizedBox(height: 20),
 
                     Text(
-                      "Apps I've Designed & Built",
+                      "Selected Work",
                       style: Theme.of(context).textTheme.headlineMedium!
                           .copyWith(
                             fontSize: 48,
@@ -144,8 +144,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                     SizedBox(
                       width: 600,
                       child: Text(
-                        "A selection of products I've designed and engineered — "
-                        "more are coming!",
+                        "A selection of production-focused applications built with scalability, performance, and real-world use cases in mind.",
                         style: theme.bodyMedium!.copyWith(
                           fontSize: 18,
                           color: Colors.black54,
@@ -307,7 +306,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
 
                 Text(
                   p.description,
-                  maxLines: 2,
+                  maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   style: theme.bodyMedium!.copyWith(
                     fontSize: 14,
