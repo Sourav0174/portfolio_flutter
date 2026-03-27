@@ -490,9 +490,9 @@ class _SectionHeader extends StatelessWidget {
 
         Row(
           children: [
-            _StatItem("10+", "Projects Built"),
+            _StatItem("4+", "Projects Built"),
             const SizedBox(width: 40),
-            _StatItem("3", "Production Apps"),
+            _StatItem("2", "Production Apps"),
             const SizedBox(width: 40),
             _StatItem("AI + Mobile", "Focus Area"),
           ],

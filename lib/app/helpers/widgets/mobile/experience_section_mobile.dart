@@ -68,8 +68,8 @@ class ExperienceSectionMobile extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
-                    _StatItemMobile("10+", "Projects"),
-                    _StatItemMobile("3", "Apps"),
+                    _StatItemMobile("4+", "Projects"),
+                    _StatItemMobile("2", "Apps"),
                     _StatItemMobile("AI", "Focus"),
                   ],
                 ),
