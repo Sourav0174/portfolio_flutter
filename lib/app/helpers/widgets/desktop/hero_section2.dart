@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portfolio/app/helpers/constants/app_colors.dart';
+import 'package:portfolio/app/helpers/constants/constant_variables.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HeroSection extends StatelessWidget {
@@ -8,165 +9,138 @@ class HeroSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-
-    final isDesktop = width > 1200;
-    final isTablet = width > 800 && width <= 1200;
-
-    double headingSize = isDesktop
-        ? 64
-        : isTablet
-        ? 48
-        : 34;
-
-    double subHeadingSize = isDesktop
-        ? 18
-        : isTablet
-        ? 16
-        : 14;
+    final size = MediaQuery.of(context).size;
 
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
           colors: [Color(0XFFF3904F), Color(0XFF3B4371)],
         ),
       ),
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 1400),
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: isDesktop ? 20 : 24,
-              vertical: 40,
-            ),
-            child: Container(
-              padding: EdgeInsets.all(isDesktop ? 40 : 20),
-              decoration: BoxDecoration(
-                color: AppColors.dawnPink,
-                borderRadius: BorderRadius.circular(28),
-              ),
+      child: Padding(
+        padding: const EdgeInsets.all(40),
+        child: Container(
+          constraints: const BoxConstraints(maxWidth: 1800),
+          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 40),
+          decoration: BoxDecoration(
+            color: AppColors.dawnPink,
+            borderRadius: BorderRadius.circular(28),
+          ),
 
-              /// 🔥 MAIN LAYOUT
-              child: isDesktop
-                  ? _buildDesktop(context, headingSize, subHeadingSize)
-                  : _buildMobileTablet(context, headingSize, subHeadingSize),
-            ),
+          /// 🔥 MAIN RESPONSIVE LAYOUT
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              final isMobile = constraints.maxWidth < 800;
+
+              return isMobile
+                  ? Column(
+                      children: [
+                        _buildImage(size),
+                        const SizedBox(height: 30),
+                        _buildContent(context),
+                      ],
+                    )
+                  : Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(flex: 1, child: _buildImage(size)),
+                        const SizedBox(width: 40),
+                        Expanded(flex: 1, child: _buildContent(context)),
+                      ],
+                    );
+            },
           ),
         ),
       ),
     );
   }
 
-  /// 💻 DESKTOP
-  Widget _buildDesktop(BuildContext context, double h, double sh) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        /// LEFT CONTENT
-        Expanded(
-          flex: 5,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _heading(context, h),
-              const SizedBox(height: 20),
-              _subHeading(context, sh),
-              const SizedBox(height: 30),
-              const HeroCTA(),
-              const SizedBox(height: 40),
-              _experience(context),
-            ],
-          ).animate().fadeIn().slideX(begin: -0.1),
-        ),
-
-        const SizedBox(width: 40),
-
-        /// RIGHT IMAGE
-        Expanded(flex: 5, child: _imageSection()),
-      ],
-    );
-  }
-
-  /// 📱 MOBILE + TABLET
-  Widget _buildMobileTablet(BuildContext context, double h, double sh) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        _heading(context, h),
-        const SizedBox(height: 16),
-        _subHeading(context, sh),
-        const SizedBox(height: 20),
-        _imageSection(),
-        const SizedBox(height: 20),
-        const HeroCTA(),
-        const SizedBox(height: 30),
-        _experience(context),
-      ],
-    ).animate().fadeIn();
-  }
-
-  /// 🔤 HEADING
-  Widget _heading(BuildContext context, double size) {
-    return Text(
-      "Hey There,\nI'm Sourav",
-      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-        fontSize: size,
-        fontWeight: FontWeight.w900,
-        height: 1.2,
-        color: const Color(0xFF2F4F4F),
-      ),
-    );
-  }
-
-  /// ✏️ SUB HEADING
-  Widget _subHeading(BuildContext context, double size) {
-    return Text(
-      "Flutter Engineer • Building Scalable Mobile & Web Applications",
-      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-        fontSize: size,
-        color: Colors.black54,
-        height: 1.6,
-      ),
-    );
-  }
-
-  /// 🖼 IMAGE SECTION
-  Widget _imageSection() {
+  /// 🔹 LEFT IMAGE
+  Widget _buildImage(Size size) {
     return Stack(
-      alignment: Alignment.center,
-      children: [
-        Image.asset(
-          'assets/images/gradientPaint_2.png',
-          height: 300,
-        ).animate().fadeIn(),
-
-        Image.asset(
-          'assets/images/profile2.png',
-          height: 420,
-        ).animate().slideY(begin: 0.2).fadeIn(),
-      ],
-    );
+          alignment: Alignment.center,
+          children: [
+            Image.asset(
+              'assets/images/gradientPaint_2.png',
+              height: size.height * 0.4,
+            ),
+            Image.asset(
+              'assets/images/profile2.png',
+              height: size.height * 0.6,
+            ),
+          ],
+        )
+        .animate()
+        .fadeIn(duration: 800.ms)
+        .scale(begin: const Offset(0.9, 0.9), end: const Offset(1, 1));
   }
 
-  /// 📊 EXPERIENCE
-  Widget _experience(BuildContext context) {
+  /// 🔹 RIGHT CONTENT
+  Widget _buildContent(BuildContext context) {
+    final theme = Theme.of(context).textTheme;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        /// TITLE
         Text(
-          "100+",
-          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-            fontSize: 40,
-            fontWeight: FontWeight.bold,
+          "Hey There,\nI'm Sourav",
+          style: theme.bodyMedium!.copyWith(
+            fontSize: 48,
+            fontWeight: FontWeight.w900,
+            height: 1.2,
+            color: const Color(0xFF2F4F4F),
           ),
-        ),
+        ).animate().fadeIn().slideY(begin: 0.2),
+
+        const SizedBox(height: 16),
+
+        /// SUBTITLE
         Text(
-          "DSA Problems • Strong Problem-Solving",
-          style: Theme.of(
-            context,
-          ).textTheme.bodyMedium!.copyWith(fontSize: 14, color: Colors.black54),
-        ),
+          "Flutter Engineer • Building Scalable Apps",
+          style: theme.bodyMedium!.copyWith(
+            fontSize: 18,
+            color: Colors.black54,
+          ),
+        ).animate(delay: 200.ms).fadeIn(),
+
+        const SizedBox(height: 20),
+
+        /// DESCRIPTION
+        Text(
+          "I build high-performance Flutter apps with clean architecture, scalability, and real-world impact.",
+          style: theme.bodyMedium!.copyWith(
+            fontSize: 16,
+            height: 1.6,
+            color: Colors.black54,
+          ),
+        ).animate(delay: 300.ms).fadeIn(),
+
+        const SizedBox(height: 30),
+
+        /// CTA
+        const HeroCTA(),
+
+        const SizedBox(height: 20),
+
+        /// BADGE
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+          decoration: BoxDecoration(
+            color: Colors.white70,
+            borderRadius: BorderRadius.circular(30),
+          ),
+          child: const Text(
+            "Open to Opportunities",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              color: Color(0XFFF3904F),
+            ),
+          ),
+        ).animate(delay: 400.ms).fadeIn(),
       ],
     );
   }

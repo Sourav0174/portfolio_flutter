@@ -14,7 +14,7 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return ResponsiveLayout(
       mobile: HomeMobileView(),
-      tablet: HomeTabletView(),
+      tablet: HomeDesktopView(),
       desktop: HomeDesktopView(),
     );
   }

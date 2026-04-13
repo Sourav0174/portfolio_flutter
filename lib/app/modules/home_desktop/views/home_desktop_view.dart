@@ -3,7 +3,7 @@ import 'package:portfolio/app/helpers/widgets/desktop/about_section.dart';
 import 'package:portfolio/app/helpers/widgets/desktop/contact_section.dart';
 import 'package:portfolio/app/helpers/widgets/desktop/experience_section.dart';
 import 'package:portfolio/app/helpers/widgets/desktop/project_section.dart';
-import 'package:portfolio/app/helpers/widgets/desktop/hero_section.dart';
+import 'package:portfolio/app/helpers/widgets/desktop/hero_section2.dart';
 import 'package:portfolio/app/modules/home/widgets/desktop/navbar.dart';
 
 class HomeDesktopView extends StatefulWidget {
