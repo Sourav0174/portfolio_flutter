@@ -17,27 +17,43 @@ class Navbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+    final isDesktop = width > 900;
+    final isTablet = width > 600 && width <= 900;
 
     return Material(
       color: Colors.transparent,
-      elevation: 10, // 👈 controls height of shadow
-      shadowColor: Colors.grey.withValues(alpha: 0.10), // 👈 shadow color
+      elevation: 10,
+      shadowColor: Colors.grey.withValues(alpha: 0.10),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 20),
+        padding: EdgeInsets.symmetric(
+          horizontal: isDesktop ? 60 : 20,
+          vertical: 20,
+        ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const SizedBox(
-              width: 160, // adjust based on longest text
-              child: AnimatedGreeting(),
+            /// LEFT
+            Expanded(flex: 2, child: const AnimatedGreeting()),
+
+            /// CENTER
+            if (width > 1100)
+              Expanded(
+                flex: 6,
+                child: Center(
+                  child: _DesktopMenu(
+                    onMenuTap: onMenuTap,
+                    currentIndex: currentIndex,
+                  ),
+                ),
+              ),
+
+            /// RIGHT (FIXED 🔥)
+            Expanded(
+              flex: 1,
+              child: Align(
+                alignment: Alignment.centerRight, // 👈 THIS IS THE KEY
+                child: width > 1100 ? _ContactButton() : _MobileMenuButton(),
+              ),
             ),
-
-            // CENTER - Menu (hide on mobile)
-            if (width > 900)
-              _DesktopMenu(onMenuTap: onMenuTap, currentIndex: currentIndex),
-
-            // RIGHT - Contact / Menu icon
-            width > 900 ? _ContactButton() : _MobileMenuButton(),
           ],
         ),
       ),
