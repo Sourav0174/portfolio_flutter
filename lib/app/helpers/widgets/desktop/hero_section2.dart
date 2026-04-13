@@ -20,10 +20,10 @@ class HeroSection extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(40),
+        padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 60),
         child: Container(
           constraints: const BoxConstraints(maxWidth: 1800),
-          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 40),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
           decoration: BoxDecoration(
             color: AppColors.dawnPink,
             borderRadius: BorderRadius.circular(28),
@@ -122,25 +122,55 @@ class HeroSection extends StatelessWidget {
         const SizedBox(height: 30),
 
         /// CTA
-        const HeroCTA(),
-
-        const SizedBox(height: 20),
-
-        /// BADGE
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
-          decoration: BoxDecoration(
-            color: Colors.white70,
-            borderRadius: BorderRadius.circular(30),
-          ),
-          child: const Text(
-            "Open to Opportunities",
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              color: Color(0XFFF3904F),
-            ),
-          ),
-        ).animate(delay: 400.ms).fadeIn(),
+        MediaQuery.of(context).size.width > 1200
+            ? Row(
+                children: [
+                  const HeroCTA(),
+                  const SizedBox(width: 20),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 18,
+                      vertical: 10,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.white70,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: const Text(
+                      "Open to Opportunities",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: Color(0XFFF3904F),
+                      ),
+                    ),
+                  ).animate(delay: 400.ms).fadeIn(),
+                ],
+              )
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const HeroCTA(),
+                  const SizedBox(height: 20),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 18,
+                      vertical: 10,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.white70,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: const Text(
+                      "Open to Opportunities",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: Color(0XFFF3904F),
+                      ),
+                    ),
+                  ).animate(delay: 400.ms).fadeIn(),
+                ],
+              ),
       ],
     );
   }
