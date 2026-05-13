@@ -937,13 +937,13 @@ class _ContactField extends StatelessWidget {
     return TextField(
       controller: controller,
       maxLines: maxLines,
-      style: theme.bodyMedium!.copyWith(color: Colors.white),
+      style: theme.bodyMedium!.copyWith(color: Colors.white, fontSize: 12),
       decoration: InputDecoration(
         hintText: hint,
 
         hintStyle: theme.bodyMedium!.copyWith(
           color: Colors.white.withOpacity(0.5),
-          fontSize: 16,
+          fontSize: 12,
         ),
         filled: true,
         fillColor: Colors.white.withOpacity(0.05),
