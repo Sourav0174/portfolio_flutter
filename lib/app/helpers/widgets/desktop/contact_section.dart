@@ -940,8 +940,10 @@ class _ContactField extends StatelessWidget {
       style: theme.bodyMedium!.copyWith(color: Colors.white),
       decoration: InputDecoration(
         hintText: hint,
+
         hintStyle: theme.bodyMedium!.copyWith(
           color: Colors.white.withOpacity(0.5),
+          fontSize: 16,
         ),
         filled: true,
         fillColor: Colors.white.withOpacity(0.05),
