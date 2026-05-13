@@ -934,16 +934,27 @@ class _ContactField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
+    // Responsive font size
+    final double fontSize = width > 900
+        ? 16
+        : width > 600
+        ? 14
+        : 12;
+
     return TextField(
       controller: controller,
       maxLines: maxLines,
-      style: theme.bodyMedium!.copyWith(color: Colors.white, fontSize: 12),
+      style: theme.bodyMedium!.copyWith(
+        color: Colors.white,
+        fontSize: fontSize,
+      ),
       decoration: InputDecoration(
         hintText: hint,
-
         hintStyle: theme.bodyMedium!.copyWith(
           color: Colors.white.withOpacity(0.5),
-          fontSize: 12,
+          fontSize: fontSize,
         ),
         filled: true,
         fillColor: Colors.white.withOpacity(0.05),

@@ -31,7 +31,7 @@ class ContactSectionMobile extends StatelessWidget {
             children: [
               /// 🔥 TITLE
               const Text(
-                "Let’s Build Something Amazing ",
+                "Let’s Build Something Amazing",
                 style: TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
