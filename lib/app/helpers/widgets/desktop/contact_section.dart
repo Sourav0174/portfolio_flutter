@@ -6,6 +6,7 @@ import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portfolio/app/helpers/constants/constant_variables.dart';
+import 'package:portfolio/app/routes/app_pages.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
 
@@ -383,19 +384,7 @@ class _PortfolioFooter extends StatelessWidget {
               ),
             ),
 
-            /// PROJECTS
-            Expanded(
-              child: _FooterColumn(
-                title: "Projects",
-                children: const [
-                  _FooterLink("RiseAbove"),
-                  _FooterLink("Flexx"),
-                  _FooterLink("LinkUp"),
-                ],
-              ),
-            ),
-
-            /// LEGAL
+            // Project links
             Expanded(
               child: _FooterColumn(
                 title: "Projects",
@@ -415,6 +404,17 @@ class _PortfolioFooter extends StatelessWidget {
                   _FooterLink(
                     "LinkUp",
                     url: "https://github.com/Sourav0174/LinkUp_message_app_UI",
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: _FooterColumn(
+                title: "Privacy ",
+                children: [
+                  _FooterLink(
+                    "Paper Trading",
+                    route: Routes.PAPER_TRADING_PRIVACY,
                   ),
                 ],
               ),
