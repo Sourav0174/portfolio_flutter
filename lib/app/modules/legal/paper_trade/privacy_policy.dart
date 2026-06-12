@@ -22,20 +22,6 @@ class PrivacyPolicyView extends StatelessWidget {
         backgroundColor: AppColors.dawnPink.withOpacity(.92),
         elevation: 0,
         scrolledUnderElevation: 0,
-        leading: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Container(
-            decoration: const BoxDecoration(
-              color: AppColors.limedSpruce,
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(
-              Icons.arrow_back_rounded,
-              color: AppColors.dawnPink,
-              size: 20,
-            ),
-          ),
-        ),
       ),
       body: Stack(
         children: [
@@ -83,6 +69,10 @@ class PrivacyPolicyView extends StatelessWidget {
 
                     // ── Stats Strip ───────────────────────────────────────
                     const _StatsStrip(),
+
+                    const SizedBox(height: 20),
+
+                    const _AccountDeletionSection(),
 
                     const SizedBox(height: 20),
 
@@ -675,7 +665,7 @@ class _ContactCard extends StatelessWidget {
               // Email row
               _ContactRow(
                 icon: Icons.email_outlined,
-                primary: "sourav174@gmail.com",
+                primary: "info.sourav174@gmail.com",
                 secondary: "For privacy-related inquiries",
                 selectable: true,
               ),
@@ -830,6 +820,500 @@ Widget _highlight(String text) => Container(
     ),
   ),
 );
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ACCOUNT DELETION SECTION
+// ─────────────────────────────────────────────────────────────────────────────
+
+class _AccountDeletionSection extends StatelessWidget {
+  const _AccountDeletionSection();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(
+          color: AppColors.redDamask.withOpacity(.45),
+          width: 1.5,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.redDamask.withOpacity(.08),
+            blurRadius: 24,
+            offset: const Offset(0, 8),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // ── Header band ────────────────────────────────────────────
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+            decoration: BoxDecoration(
+              color: AppColors.redDamask.withOpacity(.06),
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(22),
+              ),
+              border: Border(
+                bottom: BorderSide(color: AppColors.redDamask.withOpacity(.18)),
+              ),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Left accent bar
+                Container(
+                  width: 4,
+                  height: 56,
+                  decoration: BoxDecoration(
+                    color: AppColors.redDamask,
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                ),
+                const SizedBox(width: 14),
+
+                // Icon
+                Container(
+                  width: 48,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    color: AppColors.redDamask,
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: const Icon(
+                    Icons.shield_outlined,
+                    color: Colors.white,
+                    size: 26,
+                  ),
+                ),
+                const SizedBox(width: 14),
+
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Compliance badge
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: AppColors.redDamask.withOpacity(.12),
+                          borderRadius: BorderRadius.circular(100),
+                          border: Border.all(
+                            color: AppColors.redDamask.withOpacity(.3),
+                          ),
+                        ),
+                        child: const Text(
+                          "Google Play Compliance",
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w800,
+                            color: AppColors.redDamask,
+                            letterSpacing: 0.6,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      const Text(
+                        "Account Deletion\n& Data Removal",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w800,
+                          color: AppColors.limedSpruce,
+                          height: 1.2,
+                          letterSpacing: -0.3,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // ── Body ────────────────────────────────────────────────────
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Warning banner
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 13,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppColors.redDamask.withOpacity(.09),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: AppColors.redDamask.withOpacity(.3),
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.warning_amber_rounded,
+                        color: AppColors.redDamask,
+                        size: 20,
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Text(
+                          "Deleting your account is permanent and cannot be undone.",
+                          style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.paarl,
+                            height: 1.5,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 20),
+
+                // "How to Delete" label
+                const Text(
+                  "HOW TO DELETE YOUR ACCOUNT",
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w800,
+                    color: AppColors.limedSpruce,
+                    letterSpacing: 1.1,
+                  ),
+                ),
+                const SizedBox(height: 12),
+
+                // Steps timeline
+                ..._deletionSteps.asMap().entries.map(
+                  (entry) => _DeletionStep(
+                    index: entry.key,
+                    label: entry.value,
+                    isLast: entry.key == _deletionSteps.length - 1,
+                  ),
+                ),
+
+                const SizedBox(height: 20),
+
+                // What Gets Deleted card
+                _DataCard(
+                  title: "What Gets Deleted",
+                  icon: Icons.delete_outline_rounded,
+                  iconBg: AppColors.redDamask,
+                  items: const [
+                    "Name",
+                    "Email Address",
+                    "Portfolio Data",
+                    "Trading History",
+                    "Watchlists",
+                    "Account Preferences",
+                    "Subscription records",
+                  ],
+                  chipColor: AppColors.redDamask.withOpacity(.1),
+                  chipBorder: AppColors.redDamask.withOpacity(.25),
+                  chipTextColor: AppColors.paarl,
+                ),
+
+                const SizedBox(height: 12),
+
+                // What May Be Retained card
+                _DataCard(
+                  title: "What May Be Retained",
+                  icon: Icons.lock_clock_outlined,
+                  iconBg: AppColors.limedSpruce,
+                  items: const [
+                    "Payment records",
+                    "Data required by law or fraud prevention obligations",
+                  ],
+                  chipColor: AppColors.limedSpruce.withOpacity(.07),
+                  chipBorder: AppColors.limedSpruce.withOpacity(.18),
+                  chipTextColor: AppColors.limedSpruce,
+                ),
+
+                const SizedBox(height: 16),
+
+                // Retention notice
+                Container(
+                  padding: const EdgeInsets.all(14),
+                  decoration: BoxDecoration(
+                    color: AppColors.talipTree.withOpacity(.12),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: AppColors.talipTree.withOpacity(.3),
+                    ),
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 30,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          color: AppColors.talipTree,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: const Icon(
+                          Icons.hourglass_bottom_rounded,
+                          color: Color(0xFF2a1f00),
+                          size: 16,
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          "Deleted account data is permanently removed within 90 days unless a longer retention period is legally required.",
+                          style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.limedSpruce,
+                            height: 1.6,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 16),
+
+                // Contact block
+                Container(
+                  padding: const EdgeInsets.all(14),
+                  decoration: BoxDecoration(
+                    color: AppColors.limedSpruce.withOpacity(.05),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: AppColors.limedSpruce.withOpacity(.12),
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 34,
+                        height: 34,
+                        decoration: BoxDecoration(
+                          color: AppColors.limedSpruce.withOpacity(.12),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Icon(
+                          Icons.email_outlined,
+                          color: AppColors.limedSpruce,
+                          size: 18,
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Deletion requests & privacy queries",
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xFF4a6468),
+                            ),
+                          ),
+                          const SizedBox(height: 2),
+                          SelectableText(
+                            "info.sourav174@gmail.com",
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w800,
+                              color: AppColors.limedSpruce,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+const List<String> _deletionSteps = [
+  "Open Paper Trading",
+  "Go to Settings",
+  "Tap Delete Account",
+  "Confirm deletion",
+];
+
+class _DeletionStep extends StatelessWidget {
+  final int index;
+  final String label;
+  final bool isLast;
+
+  const _DeletionStep({
+    required this.index,
+    required this.label,
+    required this.isLast,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IntrinsicHeight(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          // Step number + connector line
+          SizedBox(
+            width: 36,
+            child: Column(
+              children: [
+                Container(
+                  width: 28,
+                  height: 28,
+                  decoration: BoxDecoration(
+                    color: AppColors.limedSpruce,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    "${index + 1}",
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w800,
+                      color: AppColors.dawnPink,
+                    ),
+                  ),
+                ),
+                if (!isLast)
+                  Expanded(
+                    child: Container(
+                      width: 2,
+                      margin: const EdgeInsets.symmetric(vertical: 3),
+                      decoration: BoxDecoration(
+                        color: AppColors.limedSpruce.withOpacity(.15),
+                        borderRadius: BorderRadius.circular(2),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+          const SizedBox(width: 12),
+
+          // Label
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(bottom: isLast ? 0 : 10, top: 4),
+              child: Text(
+                label,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.limedSpruce,
+                  height: 1.5,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _DataCard extends StatelessWidget {
+  final String title;
+  final IconData icon;
+  final Color iconBg;
+  final List<String> items;
+  final Color chipColor;
+  final Color chipBorder;
+  final Color chipTextColor;
+
+  const _DataCard({
+    required this.title,
+    required this.icon,
+    required this.iconBg,
+    required this.items,
+    required this.chipColor,
+    required this.chipBorder,
+    required this.chipTextColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: chipColor.withOpacity(.4),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: chipBorder),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                  color: iconBg,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Icon(icon, color: Colors.white, size: 16),
+              ),
+              const SizedBox(width: 10),
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w800,
+                  color: chipTextColor,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: items
+                .map(
+                  (item) => Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 11,
+                      vertical: 6,
+                    ),
+                    decoration: BoxDecoration(
+                      color: chipColor,
+                      borderRadius: BorderRadius.circular(100),
+                      border: Border.all(color: chipBorder),
+                    ),
+                    child: Text(
+                      item,
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: chipTextColor,
+                      ),
+                    ),
+                  ),
+                )
+                .toList(),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 // ── Content lists ────────────────────────────────────────────────────────────
 
