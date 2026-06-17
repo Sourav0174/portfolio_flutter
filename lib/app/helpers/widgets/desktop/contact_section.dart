@@ -419,6 +419,17 @@ class _PortfolioFooter extends StatelessWidget {
                 ],
               ),
             ),
+            Expanded(
+              child: _FooterColumn(
+                title: "Terms & Conditions",
+                children: [
+                  _FooterLink(
+                    "Paper Trading",
+                    route: Routes.TERMS_AND_CONDITIONS,
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
 

@@ -35,7 +35,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   get: ^4.7.3
-  flutter_gen_runner: ^5.12.0
   google_fonts: ^6.3.3
   flutter_svg: ^2.2.3
   flutter_screenutil: ^5.9.3
@@ -43,6 +42,7 @@ dependencies:
   url_launcher: ^6.3.2
   confetti: ^0.8.0
   animate_do: ^4.2.0
+  get_cli: ^1.9.1
 
 dev_dependencies:
   flutter_test:

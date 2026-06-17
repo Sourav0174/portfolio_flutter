@@ -10,6 +10,7 @@ abstract class Routes {
   static const ABOUT = _Paths.ABOUT;
   static const CONNECT_SECTION = _Paths.CONNECT_SECTION;
   static const PAPER_TRADING_PRIVACY = _Paths.PAPER_TRADING_PRIVACY;
+  static const TERMS_AND_CONDITIONS = _Paths.TERMS_AND_CONDITIONS;
 }
 
 abstract class _Paths {
@@ -22,4 +23,5 @@ abstract class _Paths {
   static const CONNECT_SECTION = '/connect-section';
 
   static const PAPER_TRADING_PRIVACY = '/legal/paper-trading/privacy-policy';
+  static const TERMS_AND_CONDITIONS = '/legal/terms-and-conditions';
 }

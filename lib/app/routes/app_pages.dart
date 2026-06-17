@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:portfolio/app/modules/legal/paper_trade/privacy_policy.dart';
 
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
@@ -9,6 +8,9 @@ import '../modules/home_mobile/bindings/home_mobile_binding.dart';
 import '../modules/home_mobile/views/home_mobile_view.dart';
 import '../modules/home_tablet/bindings/home_tablet_binding.dart';
 import '../modules/home_tablet/views/home_tablet_view.dart';
+import '../modules/legal/paper_trade/privacy_policy.dart';
+import '../modules/legal/termsAndConditions/bindings/terms_and_conditions_binding.dart';
+import '../modules/legal/termsAndConditions/views/terms_and_conditions_view.dart';
 
 part 'app_routes.dart';
 
@@ -38,10 +40,14 @@ class AppPages {
       page: () => HomeDesktopView(),
       binding: HomeDesktopBinding(),
     ),
-
     GetPage(
       name: Routes.PAPER_TRADING_PRIVACY,
       page: () => const PrivacyPolicyView(),
+    ),
+    GetPage(
+      name: _Paths.TERMS_AND_CONDITIONS,
+      page: () => const TermsAndConditionsView(),
+      binding: TermsAndConditionsBinding(),
     ),
   ];
 }
