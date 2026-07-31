@@ -185,7 +185,7 @@ class _HeroCTAState extends State<HeroCTA> {
   bool isDownloading = false;
 
   final String resumeUrl =
-      "https://drive.google.com/uc?export=download&id=1eWSWu-kRtHpybxY1rISG7RKq8C3htSEP";
+      "https://drive.google.com/uc?export=download&id=1m8bU3C1nklchsk5rED5YkTftOnNXREjn";
 
   Future<void> _downloadResume() async {
     setState(() => isDownloading = true);
